@@ -12,10 +12,18 @@
     <div class="bar">
         <!-- 상단 메뉴바 -->
         <div style="padding-left: 50px;">
-            <div class="menu"><a href="/aboutMe" th:href="@{/aboutMe}">About Me</a></div>
-            <div class="menu"><a href="/portfolio" th:href="@{/portfolio}">Portfolio</a></div>
-            <div class="menu"><a href="/study" th:href="@{/study}">Study</a></div>
-            <div class="menu"><a href="/contact" th:href="@{/contact}">Contact</a></div>
+            <div class="menu dropdown">
+                <a href="/aboutMe" th:href="@{/aboutMe}">About Me</a>
+            </div>
+            <div class="menu">
+                <a href="/portfolio" th:href="@{/portfolio}">Portfolio</a>
+            </div>
+            <div class="menu">
+                <a href="/study" th:href="@{/study}">Study</a>
+            </div>
+            <div class="menu">
+                <a href="/contact" th:href="@{/contact}">Contact</a>
+            </div>
         </div>
     </div>
 

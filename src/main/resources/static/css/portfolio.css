@@ -5,6 +5,17 @@
     font-size: 22px;
 }
 
+.subtitle {
+    color: white;
+}
+
+.portfolio2 {
+    text-align: center;
+    padding: 50px 20px;
+    padding-top: 120px;
+    font-size: 22px;
+}
+
 .portfolio-container {
     padding-top: 50px;
     display: flex;
@@ -26,6 +37,7 @@
     width: 100%;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    max-height: 300px;
 }
 
 .btn {
