@@ -1,11 +1,16 @@
 document.addEventListener('DOMContentLoaded', function () {
     const buttons = document.querySelectorAll('.toggle-btn');
+    const roundButton = document.querySelectorAll('.round-btn');
+    const positionButton = document.getElementById('cause1');
+    const elses = document.getElementById('elses');
     const portfolioSection = document.getElementById("portfolioSection");
     const portfolioSection2 = document.getElementById("portfolioSection2");
     const portfolioSection3 = document.getElementById("portfolioSection3");
     const teamProject = document.getElementById("teamProject");
     const singleProject = document.getElementById("singleProject");
     const serviceProject = document.getElementById("serviceProject");
+
+    const cause = document.getElementById("cause");
 
     buttons.forEach(button => {
         // 버튼 클릭 시 이벤트 처리
@@ -14,6 +19,25 @@ document.addEventListener('DOMContentLoaded', function () {
             console.log("이미지 경로 전달", imagePath)
             click(button, imagePath);  // 클릭된 버튼과 이미지 경로를 전달
         });
+    });
+
+    roundButton.forEach(button => {
+        // 버튼 클릭 시 이벤트 처리
+        button.addEventListener('click', function () {
+            const imagePath = button.getAttribute('data-image');
+            console.log("이미지 경로 전달", imagePath)
+            click(button, imagePath);  // 클릭된 버튼과 이미지 경로를 전달
+        });
+    });
+
+    elses.addEventListener("click", function () {
+        cause.style.display = "none";
+        console.log("호잇2");
+    });
+
+    positionButton.addEventListener("click", function () {
+        cause.style.display = "block";
+        console.log("호잇");
     });
 
     teamProject.addEventListener("click", function () {
