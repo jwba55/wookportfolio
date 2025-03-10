@@ -6,7 +6,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const singleProject = document.getElementById("singleProject");
     const serviceProject = document.getElementById("serviceProject");
 
-
     teamProject.addEventListener("click", function () {
         portfolioSection3.style.display = "none";
         portfolioSection2.style.display = "none";
