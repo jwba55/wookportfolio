@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
     const buttons = document.querySelectorAll('.toggle-btn');
     const roundButton = document.querySelectorAll('.round-btn');
-    const positionButton = document.getElementById('cause1');
+    const positionButton = document.getElementById('access');
     const elses = document.getElementById('elses');
     const elses1 = document.getElementById('elses1');
     const elses2 = document.getElementById('elses2');
