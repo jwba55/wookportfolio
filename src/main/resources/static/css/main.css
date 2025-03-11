@@ -26,6 +26,19 @@ html {
     background-image: url('/images/profile.jpg');
 }
 
+/* study */
+.area6 {
+    width: 1130px;
+    height: 1080px;
+    position: absolute;
+    left: 790px;
+    top: 0;
+    background-position: center;
+    background-size: cover;
+    border: none;
+    background-image: url('/images/study.jpg');
+}
+
 /* 포트폴리오 기본 */
 .area3 {
     width: 1130px;
@@ -49,6 +62,19 @@ html {
     background-size: cover;
     border: none;
     background-image: url('/images/teamproject/wandu1.jpg');
+}
+
+/* 연락처*/
+.area5 {
+    width: 1130px;
+    height: 1080px;
+    position: absolute;
+    left: 790px;
+    top: 0;
+    background-position: center;
+    background-size: cover;
+    border: none;
+    background-image: url('/images/contact.jpg');
 }
 
 .projectArea {
