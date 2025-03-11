@@ -90,7 +90,7 @@ html {
 }
 
 .subarea {
-    background-color: #6dc280;
+    background-color: #50c878;
     width: 750px;
     height: 600px;
     position: absolute;
@@ -135,7 +135,7 @@ html {
 }
 
 .toggle-btn {
-    background-color: #6dc280;
+    background-color: #50c878;
     border: none;
     color: white;
     outline: none;
