@@ -1,5 +1,6 @@
 const canvas = document.getElementById("gameCanvas");
 const ctx = canvas.getContext("2d");
+const buttons = document.querySelectorAll(".toggle-btn");
 
 const spriteSheet = new Image();
 spriteSheet.src = "/images/천사2.png"; // 스프라이트 이미지 경로 설정
@@ -30,6 +31,17 @@ function animate() {
     currentFrame = (currentFrame + 1) % frameCount; // 프레임 변경
     setTimeout(animate, 200); // 200ms마다 변경
 };
+
+// 버튼 클릭 시 이동
+buttons.forEach(button => {
+    button.addEventListener("click", function () {
+        const x = this.getAttribute("data-x");
+        const y = this.getAttribute("data-y");
+
+        canvas.style.left = x + "px";
+        canvas.style.top = y + "px";
+    });
+});
 
 // 이미지 로딩 후 실행
 spriteSheet.onload = () => {
