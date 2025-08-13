@@ -1,59 +1,115 @@
 <!DOCTYPE html>
 <html lang="ko">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>메인화면</title>
-    <link rel="stylesheet" th:href="@{/css/main.css}">
-    <link rel="stylesheet" th:href="@{/css/roundbutton2.css}">
-</head>
+    <link rel="stylesheet" th:href="@{/css/main.css}" />
+    <link rel="stylesheet" th:href="@{/css/roundbutton2.css}" />
+  </head>
 
-<body>
+  <body>
     <div class="main">
-        <!-- content -->
-        <div class="area1">
-            <!-- logo -->
-            <div class="logo">
-                <a href="/" th:href="@{/}"><img th:src="@{/images/logo.jpg}" alt="logo" width="200px"
-                        height="100px"></a>
-            </div>
-
-            <div class="subarea">
-                <div class="title">
-                    About Me
-                </div>
-                <div class="subarea">
-                    <h2><button class="toggle-btn" data-image="/images/visionOrigin.jpg" id="elses">비전</button></h2>
-                    <h2><button class="toggle-btn" data-image="/images/skill.jpg" id="elses1">기술 스택</button></h2>
-                    <h2><button class="toggle-btn" data-image="/images/info.jpg" id="elses2">인적 사항</button></h2>
-                    <h2><button class="toggle-btn" data-image="/images/grow.jpg" id="elses3">성장 과정</button></h2>
-                    <h2><button class="toggle-btn" data-image="/images/experience.jpg" id="elses4">사회 경험</button></h2>
-                    <h2><button class="toggle-btn" data-image="/images/cause1.jpg" id="cause1">지원 동기</button></h2>
-                    <h2><button class="toggle-btn" data-image="/images/hobbies.jpg" id="elses5">취미&관심사</button></h2>
-                </div>
-            </div>
+      <!-- content -->
+      <div class="area1">
+        <!-- logo -->
+        <div class="logo">
+          <a href="/" th:href="@{/}"
+            ><img
+              th:src="@{/images/logo.jpg}"
+              alt="logo"
+              width="200px"
+              height="100px"
+          /></a>
         </div>
 
-        <!-- image -->
-        <div class="area2">
-            <!-- topmenu -->
-            <div>
-                <div th:replace="~{topmenu}"></div>
-            </div>
+        <div class="subarea">
+          <div class="title">About Me</div>
+          <div class="subarea">
+            <h2>
+              <button
+                class="toggle-btn"
+                data-image="/images/visionOrigin.jpg"
+                id="elses"
+              >
+                비전
+              </button>
+            </h2>
+            <h2>
+              <button
+                class="toggle-btn"
+                data-image="/images/skill.jpg"
+                id="elses1"
+              >
+                기술 스택
+              </button>
+            </h2>
+            <h2>
+              <button
+                class="toggle-btn"
+                data-image="/images/cause1.jpg"
+                id="cause1"
+              >
+                지원 동기
+              </button>
+            </h2>
+            <h2>
+              <button
+                class="toggle-btn"
+                data-image="/images/grow.jpg"
+                id="elses3"
+              >
+                성장 과정
+              </button>
+            </h2>
+            <h2>
+              <button
+                class="toggle-btn"
+                data-image="/images/experience.jpg"
+                id="elses4"
+              >
+                사회 경험
+              </button>
+            </h2>
+            <h2>
+              <button
+                class="toggle-btn"
+                data-image="/images/info.jpg"
+                id="elses2"
+              >
+                인적 사항
+              </button>
+            </h2>
+            <h2>
+              <button
+                class="toggle-btn"
+                data-image="/images/hobbies.jpg"
+                id="elses5"
+              >
+                취미&관심사
+              </button>
+            </h2>
+          </div>
+        </div>
+      </div>
 
-            <div class="position-btn" style="display: none;" id="cause">
-                <div>
-                    <button class="round-btn" data-image="images/cause1.jpg">1</button>
-                </div>
-                <div>
-                    <button class="round-btn" data-image="images/cause2.jpg">2</button>
-                </div>
-            </div>
+      <!-- image -->
+      <div class="area2">
+        <!-- topmenu -->
+        <div>
+          <div th:replace="~{topmenu}"></div>
         </div>
 
+        <div class="position-btn" style="display: none" id="cause">
+          <div>
+            <button class="round-btn" data-image="images/cause1.jpg">1</button>
+          </div>
+          <div>
+            <button class="round-btn" data-image="images/cause2.jpg">2</button>
+          </div>
+        </div>
+      </div>
     </div>
     <script th:src=" @{/js/changeImage.js}" defer></script>
-</body>
-
+  </body>
 </html>
