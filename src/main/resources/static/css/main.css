@@ -87,6 +87,7 @@ html {
     background-size: cover;
     border: none;
     background-color: #000;
+    text-decoration: none;
 }
 
 .subarea {
