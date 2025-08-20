@@ -11,7 +11,7 @@ public class MainController {
     @GetMapping("/")
     public String getMain() {
 
-        return "aboutMe";
+        return "aboutme";
     }
 
     @GetMapping("/topmenu")
@@ -21,7 +21,7 @@ public class MainController {
 
     @GetMapping("/aboutMe")
     public String aboutMe() {
-        return "aboutMe";
+        return "aboutme";
     }
 
     @GetMapping("/portfolio")
@@ -41,7 +41,7 @@ public class MainController {
 
     @GetMapping("/portfolio/wandu")
     public String portfoliWandu() {
-        return "/portfolio/wandu";
+        return "portfolio/wandu";
     }
 
 }

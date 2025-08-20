@@ -5,15 +5,13 @@ document.addEventListener('DOMContentLoaded', function () {
         // 버튼 클릭 시 이벤트 처리
         button.addEventListener('click', function () {
             const imagePath = button.getAttribute('data-image');
-            console.log("이미지 경로 전달", imagePath)
-            click(button, imagePath);  // 클릭된 버튼과 이미지 경로를 전달
+            click(button, imagePath);
         });
     });
 });
 
 function click(clickedButton, imagePath) {
     console.log("버튼 클릭됨:", clickedButton);
-    console.log("이미지 경로:", imagePath);
     // 모든 버튼 스타일 초기화
     document.querySelectorAll(".round-btn").forEach(btn => {
         btn.style.color = "white"; // 기본 색상으로 초기화

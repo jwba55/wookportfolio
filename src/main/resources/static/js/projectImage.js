@@ -16,9 +16,6 @@ document.addEventListener('DOMContentLoaded', function () {
         projectsection.style.display = "none";
     });
 
-    hide.addEventListener("click", function () {
-        projectsection.style.display = "none";
-    });
     hide1.addEventListener("click", function () {
         projectsection.style.display = "none";
     });

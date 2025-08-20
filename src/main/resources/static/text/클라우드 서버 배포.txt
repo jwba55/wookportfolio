@@ -1,0 +1,136 @@
+클라우드 서버 배포
+vscode + springboot + jsp 혹은 thymeleaf + Docker + Nginx + AWS-EC2(ubuntu기반) + DuckDNS (무료 도메인)
+
+1. 프로젝트 내에 Dockerfile만들기
+	FROM openjdk:21-jdk-slim	//jdk 버전에 맞추면됨
+	WORKDIR /app
+	ARG JAR_FILE=빌드된 jar파일.jar
+	COPY ${JAR_FILE} app.jar	//복사할 파일
+	EXPOSE 8089	//포트번호
+	ENTRYPOINT ["java", "-jar", "app.jar", "-Dspring.profiles.active=prod"]
+
+2. jar 파일 만들기(프로젝트 빌드)
+	vscode의 terminal에 입력
+		-> cd 프로젝트 폴더 경로
+			ex)cd d:\myproject
+		-> mvn clean package 명령어 입력(jar파일 빌드)
+
+3. AWS-EC2 인스터스 시작 (참고 사이트: https://seosh817.tistory.com/309 - 나랑은 조금 다름)
+	1) 회원가입/로그인
+	2) 좌측 상단 메뉴바에서 EC2 찾아서 들어가고 사이드바에서 인스턴스 클릭
+	3) 상단 메뉴바에서 국가 선택하는 곳에서 서비스 국가 선택(서울)
+	4) 인스턴스 시작
+	5) 이름 짓고 ubuntu 선택
+	6) 키페어 (신규 생성 혹은 기존 키페어 선택-나는 ppk 선택해서  putty를 사용하기도 함.)
+	7) 네트워크 설정
+		- 보안 그룹 접속 Ip설정인데 실 서비스가 아니라면 그냥 둬도 됨.
+	8) 스토리지 구성
+		- 배포 테스트 때는 프리티어를 사용할거기 때문에 8gib라고 되어있는 것을 30으로 변경
+	9) 인스턴스 시작
+	10)인스턴스 연결 (putty를 사용하거나 해도 되지만 이번엔 EC2자체 ubuntu를 이용)
+		-> EC2의 인스턴스 화면에서 body부분 상단에 연결 버튼 클릭
+		-> EC2 터미널 창 열림
+
+4. docker 설치
+	1) pc에서
+		pc에 docker 설치 및 회원가입
+		docker 키고 연결하기
+	2) EC2에서
+		sudo apt update
+		sudo apt install docker.io -y
+		sudo systemctl start docker
+		sudo systemctl enable docker
+		sudo usermod -aG docker ubuntu
+		newgrp docker
+
+5. docker 빌드
+vscode 터미널에서
+	cd 프로젝트 경로
+	mvn clean package
+	docker build -t wlwl45wl/myapp:latest .
+	docker push wlwl45wl/myapp:latest
+
+6. 이미지 풀 및 실행
+	EC2에서
+		-> docker pull your-dockerhub-username/myapp:latest
+		-> docker run -d -p 8089:8089 --name myapp 도커 아이디/myapp:latest
+	DB연결 시(DB연결이 필요없는 경우는 하지 않아도 됨.)
+		-> docker run -d -p 8089:8089 \
+ 		    -e SPRING_DATASOURCE_URL=jdbc:mysql://your-db-host:3306/디비종류 \
+                    -e SPRING_DATASOURCE_USERNAME=디비 아이디 \
+                    -e SPRING_DATASOURCE_PASSWORD=디비 비밀번호 \
+                    --name myapp 도커 아이디/myapp:latest
+
+7. DuckDNS설정
+	1) DuckDNS 사이트 진입 및 로그인
+	2) domins 라고 적혀 있는 부분 우측에 내가 사용할 도메인 주소 입력 후 add domain 클릭
+		ex) http://myapp.duckdns.org
+	3) 생성된 도메인의 current ip 부분에 EC2의 퍼블릭 IP 입력
+		-퍼블릭 IP는 EC2의 인스턴스 창에서 인스턴스 ID라고 되어있는 부분 밑에 내가 쓸 인스턴스 ID를 클릭해서 들어간다.
+		- 자동 할당된 IP 주소 라고 되어있는 곳에 퍼블릭 IP가 있음
+	4) update IP를 클릭 (여기까지 하고 나면 DuckDNS로 무료 발급받은 도메인과 EC2가 연결이 됨.)
+
+8. Nginx 설정
+	EC2에서
+		1) Nginx 설치
+			-> sudo apt install nginx -y
+			-> sudo systemctl start nginx
+			-> sudo systemctl enable nginx
+		2) 리버스 프록시
+			-> 작성내용(80포트에 대한 설정, 필요할 경우 https도 설정)
+				2-1) 기본 작성내용
+				-> sudo nano /etc/nginx/sites-available/default (나노 편집기 진입)
+				server {
+   					listen 80;
+					root /var/lib/letsencrypt;
+					index index.html index.htm index.nginx-debian.html;
+    					server_name myapp.duckdns.org;
+
+    					location / {
+        					proxy_pass http://localhost:8089;
+        					proxy_set_header Host $host;
+        					proxy_set_header X-Real-IP $remote_addr;
+        					proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        				proxy_set_header X-Forwarded-Proto $scheme;
+    					}
+				}
+				
+				2-2) HTTPS로만 접속 하도록 설정
+					2-2-1) 인증서 발급
+						-> sudo apt install certbot python3-certbot-nginx -y (Cerbot 설치)
+						-> sudo certbot --nginx -d myapp.duckdns.org (인증서 발급)
+						-> sudo nano /etc/nginx/sites-available/default (나노 편집기 진입)
+					2-2-2) 작성 내용
+					server {
+        					listen 80;
+        					server_name wookportfolio.duckdns.org;
+
+        					# 80 → 443 리다이렉트
+        					return 301 https://$host$request_uri;
+					}
+					server {
+   						listen 443 ssl;
+						root /var/lib/letsencrypt;
+						index index.html index.htm index.nginx-debian.html;
+						ssl_certificate /etc/letsencrypt/live/wookportfolio.duckdns.org/fullchain.pem;
+        					ssl_certificate_key /etc/letsencrypt/live/wookportfolio.duckdns.org/privkey.pem;
+    						server_name myapp.duckdns.org; #실제 내 DuckDNS로 발급받은 도메인
+
+    						location / {
+        						proxy_pass http://localhost:8089;
+        						proxy_set_header Host $host;
+        						proxy_set_header X-Real-IP $remote_addr;
+        						proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        						proxy_set_header X-Forwarded-Proto $scheme;
+    						}
+					}
+
+			-> CTRL + S로 저장, CTRL + X 로 창 벗어남
+			-> sudo nginx -t	(작성한 내용 검토)
+			-> sudo systemctl restart nginx (검토 성공시)
+
+10. 설정된 것들이 잘 적용되서 외부에서 접속이 되는지 확인
+	-> 주소창에 DuckDNS에서 발급받은 도메인 입력
+		ex) myapp.duckdns.org
+
+11. 잘 작동된다면 완료
