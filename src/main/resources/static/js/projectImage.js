@@ -1,48 +1,22 @@
 document.addEventListener('DOMContentLoaded', function () {
     const positionButton = document.getElementById('access');
     const projectsection = document.getElementById("title");
-    const hide = document.getElementById('hide');
-    const hide1 = document.getElementById('hide1');
-    const hide2 = document.getElementById('hide2');
-    const hide3 = document.getElementById('hide3');
-    const hide4 = document.getElementById('hide4');
-    const hide5 = document.getElementById('hide5');
-    const hide6 = document.getElementById('hide6');
-    const hide7 = document.getElementById('hide7');
-    const hide8 = document.getElementById('hide8');
-    const hide9 = document.getElementById('hide9');
+    // 공통으로 처리할 hide 버튼 id들
+    const hideIds = [
+        'hide', 'hide1', 'hide2', 'hide3', 'hide4', 
+        'hide5', 'hide6', 'hide7', 'hide8', 'hide9'
+    ];
 
-    hide.addEventListener("click", function () {
-        projectsection.style.display = "none";
+    // 모든 hide 버튼에 동일한 이벤트 리스너 등록
+    hideIds.forEach(id => {
+        const btn = document.getElementById(id);
+        if (btn) {
+            btn.addEventListener("click", function () {
+                projectsection.style.display = "none";
+            });
+        }
     });
 
-    hide1.addEventListener("click", function () {
-        projectsection.style.display = "none";
-    });
-    hide2.addEventListener("click", function () {
-        projectsection.style.display = "none";
-    });
-    hide3.addEventListener("click", function () {
-        projectsection.style.display = "none";
-    });
-    hide4.addEventListener("click", function () {
-        projectsection.style.display = "none";
-    });
-    hide5.addEventListener("click", function () {
-        projectsection.style.display = "none";
-    });
-    hide6.addEventListener("click", function () {
-        projectsection.style.display = "none";
-    });
-    hide7.addEventListener("click", function () {
-        projectsection.style.display = "none";
-    });
-    hide8.addEventListener("click", function () {
-        projectsection.style.display = "none";
-    });
-    hide9.addEventListener("click", function () {
-        projectsection.style.display = "none";
-    });
     positionButton.addEventListener("click", function () {
         projectsection.style.display = "block";
     });
