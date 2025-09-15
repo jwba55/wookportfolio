@@ -53,10 +53,6 @@ jobs:
               git clean -fd
               git pull origin main
             fi
-            # Git pull
-            git reset --hard
-            git clean -fd
-            git pull origin main
             
             # Build Spring Boot jar
             mvn clean package -DskipTests
