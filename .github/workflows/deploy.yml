@@ -45,7 +45,7 @@ jobs:
           key: ${{ secrets.PRIVATE_KEY }}
           script: |
             # SSH 접속 후 실행할 명령어들
-            cd ~/app/jungjiwook || mkdir -p ~/app/jungjiwook && cd ~/app/jungjiwook
+            cd ~/app || mkdir -p ~/app && cd ~/app
             if [ ! -d ".git" ]; then
               git clone https://github.com/사용자명/레포명.git .
             else
