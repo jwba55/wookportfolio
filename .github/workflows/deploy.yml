@@ -1,0 +1,54 @@
+name: 배포
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 소스코드 체크아웃
+        uses: actions/checkout@v3
+
+      # 2. 도커허브 로그인
+      - name: 도커허브에 로그인
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      # 3. 이미지 빌드
+      - name: 이미지 빌드
+        run: docker build -t ${{ secrets.DOCKER_USERNAME }}/wookportfolio .
+
+      # 4. 도커허브에 이미지 푸시
+      - name: 도커허브에 이미지 푸시
+        run: docker push ${{ secrets.DOCKER_USERNAME }}/wookportfolio
+
+      - name: EC2 배포
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST_PROD }}
+          username: ubuntu
+          key: ${{ secrets.PRIVATE_KEY }}
+          script: |
+            cd ~/app  # EC2에서 프로젝트 경로
+            
+            # Git pull
+            git reset --hard
+            git clean -fd
+            git pull origin main
+            
+            # Build Spring Boot jar
+            mvn clean package -DskipTests
+
+            # Docker Compose 재빌드 & 재시작
+            docker-compose down
+            docker-compose build --no-cache
+            docker-compose up -d
+
+            # Certbot 인증서 자동갱신 확인
+            docker-compose run --rm certbot renew --webroot -w /var/lib/letsencrypt
+            docker-compose exec nginx nginx -s reload
