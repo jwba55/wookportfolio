@@ -2,7 +2,7 @@
 FROM openjdk:21
 
 # 작업 디렉토리 설정
-WORKDIR /app
+WORKDIR /wookportfolio
 
 # JAR 파일 복사 (빌드된 파일명에 맞게 수정)
 ARG JAR_FILE=target/jungjiwook-0.0.1-SNAPSHOT.jar
