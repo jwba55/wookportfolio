@@ -55,13 +55,21 @@ jobs:
             APP_DIR=/home/ubuntu/wookportfolio
             cd $APP_DIR
 
-            # 기존 소스 초기화
-            sudo rm -rf $APP_DIR
-            mkdir -p $APP_DIR
-            cd $APP_DIR
+            # Git clone 또는 pull
+            if [ ! -d "$APP_DIR/.git" ]; then
+              # 기존 소스 초기화
+              sudo rm -rf $APP_DIR
+              mkdir -p $APP_DIR
 
-            # Git clone
-            sudo git clone https://github.com/jwba55/wookportfolio.git .
+              echo "Git 저장소 없음 → 클론 실행"
+              sudo git clone https://github.com/jwba55/wookportfolio.git .
+            else
+              echo "Git 저장소 있음 → 최신으로 pull"
+              cd $APP_DIR
+              sudo git reset --hard
+              sudo git clean -fd
+              sudo git pull origin main
+            fi
 
             # Maven 빌드 (pom.xml 위치 확인)
             cd $APP_DIR   # pom.xml이 있는 디렉터리
@@ -79,17 +87,21 @@ jobs:
             # Docker Compose 재빌드 & 재시작
             cd $APP_DIR
             sudo docker-compose down
-            sudo docker-compose up -d --build
+            sudo docker-compose up -d nginx
 
-            # Certbot 최초 인증서 발급
-            sudo docker run --rm \
-              -v $APP_DIR/certbot/conf:/etc/letsencrypt \
-              -v $APP_DIR/certbot/www:/var/lib/letsencrypt \
-              certbot/certbot certonly --webroot \
-              -w /var/lib/letsencrypt \
-              -d wookportfolio.kro.kr \
-              --email wlwl45wl@gmail.com \
-              --agree-tos --non-interactive
+            # SSL 인증서가 없으면 발급
+            if [ ! -f $APP_DIR/certbot/conf/live/wookportfolio.kro.kr/fullchain.pem ]; then
+              sudo docker run --rm \
+                -v $APP_DIR/certbot/conf:/etc/letsencrypt \
+                -v $APP_DIR/certbot/www:/var/lib/letsencrypt \
+                certbot/certbot certonly --webroot \
+                -w /var/lib/letsencrypt \
+                -d wookportfolio.kro.kr \
+                --email wlwl45wl@gmail.com \
+                --agree-tos --non-interactive
+            fi
+
+            sudo docker-compose up -d --build
 
             # Nginx reload
             sudo docker-compose exec nginx nginx -s reload
