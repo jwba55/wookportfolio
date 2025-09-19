@@ -10,7 +10,7 @@ services:
     restart: always
 
   nginx:
-    build: ./nginx           # ← 여기서 로컬 Dockerfile로 이미지 빌드
+    build: ./nginx/conf.d        # ← 여기서 로컬 Dockerfile로 이미지 빌드
     container_name: wook-nginx
     ports:
       - "80:80"
