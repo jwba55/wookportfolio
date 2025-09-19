@@ -4,8 +4,6 @@ services:
   springboot-app:
     image: wlwl45wl/wookportfolio:latest   # ← Docker Hub 이미지 (Actions가 최신 이미지를 push)
     container_name: springboot-app
-    env_file:
-      - .env
     ports:
       - "8089:8089"
     restart: always
