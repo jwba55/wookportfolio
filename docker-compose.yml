@@ -30,9 +30,20 @@ services:
       - ./certbot/conf:/etc/letsencrypt
       - ./certbot/www:/var/lib/letsencrypt
     entrypoint: >
-      /bin/sh -c 'trap exit TERM;
-      while :;
-      do certbot renew --webroot -w /var/lib/letsencrypt --deploy-hook "docker exec wook-nginx nginx -s reload";
-      sleep 12h & wait $${!};
+      /bin/sh -c '
+      # 최초 인증서 발급
+      if [ ! -f /etc/letsencrypt/live/wookportfolio.kro.kr/fullchain.pem ]; then
+        certbot certonly --webroot -w /var/lib/letsencrypt \
+          -d wookportfolio.kro.kr \
+          --email wlwl45wl@gmail.com --agree-tos --non-interactive
+        docker exec wook-nginx nginx -s reload
+      fi
+
+      # 이후 갱신 루프
+      trap exit TERM;
+      while :; do
+        certbot renew --webroot -w /var/lib/letsencrypt \
+          --deploy-hook "docker exec wook-nginx nginx -s reload";
+        sleep 12h & wait $${!};
       done;'
     restart: always

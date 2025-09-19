@@ -53,7 +53,6 @@ jobs:
           key: ${{ secrets.PRIVATE_KEY }}
           script: |
             APP_DIR=/home/ubuntu/wookportfolio
-            cd $APP_DIR
 
             # Git clone 또는 pull
             if [ ! -d "$APP_DIR/.git" ]; then
@@ -84,24 +83,17 @@ jobs:
             # 최신 이미지 가져오기
             sudo docker pull ${{ secrets.DOCKER_USERNAME }}/wookportfolio
 
-            # Docker Compose 재빌드 & 재시작
-            cd $APP_DIR
-            sudo docker-compose down
-            sudo docker-compose up -d nginx
+            sudo curl http://localhost/.well-known/acme-challenge/test
 
-            # SSL 인증서가 없으면 발급
-            if [ ! -f $APP_DIR/certbot/conf/live/wookportfolio.kro.kr/fullchain.pem ]; then
-              sudo docker run --rm \
-                -v $APP_DIR/certbot/conf:/etc/letsencrypt \
-                -v $APP_DIR/certbot/www:/var/lib/letsencrypt \
-                certbot/certbot certonly --webroot \
-                -w /var/lib/letsencrypt \
-                -d wookportfolio.kro.kr \
-                --email wlwl45wl@gmail.com \
-                --agree-tos --non-interactive
+            # 기존 컨테이너 중지 및 삭제
+            if [ $(sudo docker ps -q -f name=wookportfolio) ]; then
+              sudo docker stop wookportfolio
+              sudo docker rm wookportfolio
             fi
 
-            sudo docker-compose up -d --build
+            # 최신 이미지 가져오기
+            sudo docker pull ${{ secrets.DOCKER_USERNAME }}/wookportfolio
 
-            # Nginx reload
-            sudo docker-compose exec nginx nginx -s reload
+            # Docker Compose로 springboot-app + nginx 실행
+            cd $APP_DIR
+            sudo docker-compose up -d --build springboot-app nginx
