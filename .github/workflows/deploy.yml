@@ -51,30 +51,32 @@ jobs:
           username: ubuntu
           key: ${{ secrets.PRIVATE_KEY }}
           script: |
-            #!/bin/bash
-            set -e
-            set -x
+            # EC2 프로젝트 디렉터리
+            APP_DIR=/home/ubuntu/wookportfolio
+            cd $APP_DIR
 
-            # 작업 디렉터리 이동
-            mkdir -p ~/wookportfolio
-            cd ~/wookportfolio
+            # SSL 폴더 제외하고 기존 파일 삭제
+            find . -maxdepth 1 ! -name '.' ! -name 'certbot' -exec rm -rf {} +
 
-            # Git 업데이트
+            # Git clone (초기 배포 시) 또는 pull
             if [ ! -d ".git" ]; then
               git clone https://github.com/jwba55/wookportfolio.git .
             else
-              git fetch --all
-              git reset --hard origin/main
+              git reset --hard
               git clean -fd
+              git pull origin main
             fi
 
-            # Spring Boot 빌드
+            # Maven 빌드
             mvn clean package -DskipTests
 
             # Docker Compose 재빌드 & 재시작
-            docker-compose down -v --remove-orphans
+            docker-compose down
             docker-compose build --no-cache
             docker-compose up -d
+
+            # Nginx reload (SSL 적용)
+            docker-compose exec nginx nginx -s reload
 
             # Certbot 인증서 갱신 & Nginx reload
             docker-compose run --rm certbot renew --webroot -w /var/lib/letsencrypt
