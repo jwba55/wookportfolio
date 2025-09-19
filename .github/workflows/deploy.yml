@@ -52,7 +52,7 @@ jobs:
           key: ${{ secrets.PRIVATE_KEY }}
           script: |
             # SSH 접속 후 실행할 명령어들
-            cd ~/app || mkdir -p ~/app && cd ~/app
+            cd ~/wookportfolio || mkdir -p ~/wookportfolio && cd ~/wookportfolio
             if [ ! -d ".git" ]; then
               git clone https://github.com/jwba55/wookportfolio.git .
             else
