@@ -67,7 +67,7 @@ jobs:
             fi
 
             # Maven 빌드 (pom.xml 위치 확인)
-            cd $APP_DIR/jungjiwook   # pom.xml이 있는 디렉터리
+            cd $APP_DIR   # pom.xml이 있는 디렉터리
             mvn clean package -DskipTests
 
             # Docker Compose 재빌드 & 재시작
