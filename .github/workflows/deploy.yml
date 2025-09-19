@@ -51,24 +51,31 @@ jobs:
           username: ubuntu
           key: ${{ secrets.PRIVATE_KEY }}
           script: |
-            # SSH 접속 후 실행할 명령어들
-            cd ~/wookportfolio || mkdir -p ~/wookportfolio && cd ~/wookportfolio
+            #!/bin/bash
+            set -e
+            set -x
+
+            # 작업 디렉터리 이동
+            mkdir -p ~/wookportfolio
+            cd ~/wookportfolio
+
+            # Git 업데이트
             if [ ! -d ".git" ]; then
               git clone https://github.com/jwba55/wookportfolio.git .
             else
-              git reset --hard
+              git fetch --all
+              git reset --hard origin/main
               git clean -fd
-              git pull origin main
             fi
-            
-            # Build Spring Boot jar
+
+            # Spring Boot 빌드
             mvn clean package -DskipTests
 
             # Docker Compose 재빌드 & 재시작
-            docker-compose down
+            docker-compose down -v --remove-orphans
             docker-compose build --no-cache
             docker-compose up -d
 
-            # Certbot 인증서 자동갱신 확인
+            # Certbot 인증서 갱신 & Nginx reload
             docker-compose run --rm certbot renew --webroot -w /var/lib/letsencrypt
-            docker-compose exec nginx nginx -s reload
+            docker-compose exec nginx nginx -t && docker-compose exec nginx nginx -s reload
