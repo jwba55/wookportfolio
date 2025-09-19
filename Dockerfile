@@ -5,7 +5,7 @@ FROM openjdk:21
 WORKDIR /wookportfolio
 
 # JAR 파일 복사 (빌드된 파일명에 맞게 수정)
-ARG JAR_FILE=target/jungjiwook-0.0.1-SNAPSHOT.jar
+ARG JAR_FILE=target/wookportfolio-0.0.1-SNAPSHOT.jar
 COPY ${JAR_FILE} app.jar
 
 # 컨테이너 포트 노출 (Spring Boot 실행 포트)
