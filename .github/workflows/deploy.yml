@@ -55,32 +55,32 @@ jobs:
             cd $APP_DIR
 
             # 기존 폴더 삭제 (certbot 포함)
-            rm -rf ./*
+            sudo rm -rf ./*
 
             # Git clone 또는 pull
             if [ ! -d ".git" ]; then
-              git clone https://github.com/jwba55/wookportfolio.git .
+              sudo git clone https://github.com/jwba55/wookportfolio.git .
             else
-              git reset --hard
-              git clean -fd
-              git pull origin main
+              sudo git reset --hard
+              sudo git clean -fd
+              sudo git pull origin main
             fi
 
             # Maven 빌드 (pom.xml 위치 확인)
             cd $APP_DIR   # pom.xml이 있는 디렉터리
-            mvn clean package -DskipTests
+            sudo mvn clean package -DskipTests
 
             # Docker Compose 재빌드 & 재시작
             cd $APP_DIR
-            docker-compose down
-            docker-compose build --no-cache
-            docker-compose up -d
+            sudo docker-compose down
+            sudo docker-compose build --no-cache
+            sudo docker-compose up -d
 
             # Certbot 최초 인증서 발급
-            docker run --rm -p 80:80 \
+            sudo docker run --rm -p 80:80 \
               -v $APP_DIR/certbot/conf:/etc/letsencrypt \
               -v $APP_DIR/certbot/www:/var/lib/letsencrypt \
               certbot/certbot certonly --standalone -d wookportfolio.kro.kr --agree-tos --non-interactive -m wlwl45wl@gmail.com
 
             # Nginx reload
-            docker-compose exec nginx nginx -s reload
+            sudo docker-compose exec nginx nginx -s reload
