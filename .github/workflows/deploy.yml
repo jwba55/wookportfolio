@@ -54,8 +54,8 @@ jobs:
             APP_DIR=/home/ubuntu/wookportfolio
             cd $APP_DIR
 
-            # SSL 폴더 제외하고 기존 파일 삭제
-            find . -maxdepth 1 ! -name '.' ! -name 'certbot' -exec rm -rf {} +
+            # 기존 폴더 삭제 (certbot 포함)
+            rm -rf ./*
 
             # Git clone 또는 pull
             if [ ! -d ".git" ]; then
@@ -76,6 +76,11 @@ jobs:
             docker-compose build --no-cache
             docker-compose up -d
 
-            # Certbot 인증서 갱신 & Nginx reload
-            docker-compose run --rm certbot renew --webroot -w /var/lib/letsencrypt
-            docker-compose exec nginx nginx -t && docker-compose exec nginx nginx -s reload
+            # Certbot 최초 인증서 발급
+            docker run --rm -p 80:80 \
+              -v $APP_DIR/certbot/conf:/etc/letsencrypt \
+              -v $APP_DIR/certbot/www:/var/lib/letsencrypt \
+              certbot/certbot certonly --standalone -d wookportfolio.kro.kr --agree-tos --non-interactive -m wlwl45wl@gmail.com
+
+            # Nginx reload
+            docker-compose exec nginx nginx -s reload
