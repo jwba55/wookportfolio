@@ -82,10 +82,14 @@ jobs:
             sudo docker-compose up -d --build
 
             # Certbot 최초 인증서 발급
-            sudo docker run --rm -p 80:80 \
+            sudo docker run --rm \
               -v $APP_DIR/certbot/conf:/etc/letsencrypt \
               -v $APP_DIR/certbot/www:/var/lib/letsencrypt \
-              certbot/certbot certonly --standalone -d wookportfolio.kro.kr --agree-tos --non-interactive -m wlwl45wl@gmail.com
+              certbot/certbot certonly --webroot \
+              -w /var/lib/letsencrypt \
+              -d wookportfolio.kro.kr \
+              --email wlwl45wl@gmail.com \
+              --agree-tos --non-interactive
 
             # Nginx reload
             sudo docker-compose exec nginx nginx -s reload
