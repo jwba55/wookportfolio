@@ -2,6 +2,7 @@ version: "3.8"
 
 services:
   springboot-app:
+    build: .
     image: wlwl45wl/wookportfolio:latest
     container_name: springboot-app
     expose:
@@ -15,7 +16,7 @@ services:
       - "80:80"
       - "443:443"
     volumes:
-      - ./nginx/conf.d:/etc/nginx/conf.d:ro
+      - ./nginx/conf.d:/etc/nginx/conf.d:rw
       - ./certbot/conf:/etc/letsencrypt
       - ./certbot/www:/var/lib/letsencrypt
     depends_on:
@@ -31,7 +32,7 @@ services:
     entrypoint: >
       /bin/sh -c 'trap exit TERM;
       while :;
-      do certbot renew --webroot -w /var/lib/letsencrypt --deploy-hook "nginx -s reload";
+      do certbot renew --webroot -w /var/lib/letsencrypt --deploy-hook "docker exec wook-nginx nginx -s reload";
       sleep 12h & wait $${!};
       done;'
     restart: always
