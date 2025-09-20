@@ -10,7 +10,7 @@ services:
     restart: always
 
   nginx:
-    build: ./nginx       # ← 여기서 로컬 Dockerfile로 이미지 빌드
+    build: ./nginx
     container_name: wook-nginx
     ports:
       - "80:80"
@@ -36,6 +36,10 @@ services:
         certbot certonly --webroot -w /var/lib/letsencrypt \
           -d wookportfolio.duckdns.org \
           --email wlwl45wl@gmail.com --agree-tos --non-interactive
+
+        # HTTP-only 설정 → HTTPS 설정 교체
+        rm -f /etc/nginx/conf.d/*.conf
+        cp /etc/nginx/conf.d/https.conf /etc/nginx/conf.d/wookportfolio.conf
         docker exec wook-nginx nginx -s reload
       fi
 
