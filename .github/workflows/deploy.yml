@@ -87,7 +87,7 @@ jobs:
 
             # Docker Compose로 springboot-app + nginx 실행
             cd $APP_DIR
-            sudo docker-compose up -d --build springboot-app nginx certbot
+            sudo docker-compose up -d --build springboot-app nginx
 
             sudo ls -1 /etc/letsencrypt/live/wookportfolio.duckdns.org/
             sudo docker logs wook-nginx --tail=50

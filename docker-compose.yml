@@ -14,7 +14,6 @@ services:
     container_name: wook-nginx
     ports:
       - "80:80"
-      - "443:443"
     volumes:
       - ./nginx/conf.d:/etc/nginx/conf.d:rw
       - ./certbot/conf:/etc/letsencrypt
@@ -27,27 +26,8 @@ services:
     image: certbot/certbot
     container_name: certbot
     volumes:
-      - ./certbot/conf:/etc/letsencrypt
-      - ./certbot/www:/var/lib/letsencrypt
-    entrypoint: >
-      /bin/sh -c '
-      # 최초 인증서 발급
-      if [ ! -f /etc/letsencrypt/live/wookportfolio.duckdns.org/fullchain.pem ]; then
-        certbot certonly --webroot -w /var/lib/letsencrypt \
-          -d wookportfolio.duckdns.org \
-          --email wlwl45wl@gmail.com --agree-tos --non-interactive
-
-        # HTTP-only 설정 → HTTPS 설정 교체
-        rm -f /etc/nginx/conf.d/*.conf
-        cp /etc/nginx/conf.d/https.conf /etc/nginx/conf.d/wookportfolio.conf
-        docker exec wook-nginx nginx -s reload
-      fi
-
-      # 이후 갱신 루프
-      trap exit TERM;
-      while :; do
-        certbot renew --webroot -w /var/lib/letsencrypt \
-          --deploy-hook "docker exec wook-nginx nginx -s reload";
-        sleep 12h & wait $${!};
-      done;'
+      - ./nginx/conf.d:/etc/nginx/conf.d:rw
+      - /home/ubuntu/certs:/etc/nginx/certs:ro
+    depends_on:
+      - springboot-app
     restart: always
