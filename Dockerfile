@@ -11,5 +11,7 @@ COPY ${JAR_FILE} app.jar
 # 컨테이너 포트 노출 (Spring Boot 실행 포트)
 EXPOSE 8089
 
+RUN chmod +x app.jar
+
 # 실행 명령어 (JVM 옵션 → Spring profile 적용)
 ENTRYPOINT ["java", "-Dspring.profiles.active=prod", "-jar", "app.jar"]

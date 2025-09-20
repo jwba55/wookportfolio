@@ -32,9 +32,9 @@ services:
     entrypoint: >
       /bin/sh -c '
       # 최초 인증서 발급
-      if [ ! -f /etc/letsencrypt/live/wookportfolio.kro.kr/fullchain.pem ]; then
+      if [ ! -f /etc/letsencrypt/live/wookportfolio.duckdns.org/fullchain.pem ]; then
         certbot certonly --webroot -w /var/lib/letsencrypt \
-          -d wookportfolio.kro.kr \
+          -d wookportfolio.duckdns.org \
           --email wlwl45wl@gmail.com --agree-tos --non-interactive
         docker exec wook-nginx nginx -s reload
       fi
