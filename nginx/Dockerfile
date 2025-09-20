@@ -9,7 +9,7 @@ COPY ./conf.d /etc/nginx/conf.d
 RUN mkdir -p /var/log/nginx && chmod -R 755 /var/log/nginx
 
 EXPOSE 80
-EXPOSE 443
+# EXPOSE 443
 
 # Nginx 실행 및 Certbot 인증서 갱신
 CMD ["sh", "-c", "nginx -g 'daemon off;'"]

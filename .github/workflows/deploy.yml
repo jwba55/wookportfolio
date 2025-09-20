@@ -85,15 +85,6 @@ jobs:
 
             sudo curl http://localhost/.well-known/acme-challenge/test
 
-            # 기존 컨테이너 중지 및 삭제
-            if [ $(sudo docker ps -q -f name=wookportfolio) ]; then
-              sudo docker stop wookportfolio
-              sudo docker rm wookportfolio
-            fi
-
-            # 최신 이미지 가져오기
-            sudo docker pull ${{ secrets.DOCKER_USERNAME }}/wookportfolio
-
             # Docker Compose로 springboot-app + nginx 실행
             cd $APP_DIR
             sudo docker-compose up -d --build springboot-app nginx
