@@ -14,7 +14,6 @@ services:
     container_name: wook-nginx
     ports:
       - "80:80"
-      - "443:443"
     volumes:
       - ./nginx/conf.d:/etc/nginx/conf.d:rw
       - ./certbot/conf:/etc/letsencrypt
