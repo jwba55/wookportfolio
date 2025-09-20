@@ -16,7 +16,8 @@ services:
       - "80:80"
     volumes:
       - ./nginx/conf.d:/etc/nginx/conf.d:rw
-      - /etc/letsencrypt:/etc/letsencrypt:ro
+      - /etc/letsencrypt/live/wookportfolio.duckdns.org/fullchain.pem:/etc/nginx/certs/fullchain.pem:ro
+      - /etc/letsencrypt/live/wookportfolio.duckdns.org/privkey.pem:/etc/nginx/certs/privkey.pem:ro
     depends_on:
       - springboot-app
     restart: always
