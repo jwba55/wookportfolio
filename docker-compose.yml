@@ -20,13 +20,3 @@ services:
     depends_on:
       - springboot-app
     restart: always
-
-  certbot:
-    image: certbot/certbot
-    container_name: certbot
-    volumes:
-      - ./nginx/conf.d:/etc/nginx/conf.d:rw
-      - /home/ubuntu/certs:/etc/nginx/certs:ro
-    depends_on:
-      - springboot-app
-    restart: always
