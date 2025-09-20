@@ -16,8 +16,7 @@ services:
       - "80:80"
     volumes:
       - ./nginx/conf.d:/etc/nginx/conf.d:rw
-      - ./certbot/conf:/etc/letsencrypt
-      - ./certbot/www:/var/lib/letsencrypt
+      - /home/ubuntu/certs:/etc/nginx/certs:ro
     depends_on:
       - springboot-app
     restart: always
