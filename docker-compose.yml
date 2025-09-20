@@ -5,8 +5,8 @@ services:
     build: .
     image: wlwl45wl/wookportfolio:latest
     container_name: springboot-app
-    expose:
-      - "8089"
+    ports:
+      - "8089:8089"
     restart: always
 
   nginx:
