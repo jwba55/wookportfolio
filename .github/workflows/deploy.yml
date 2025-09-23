@@ -90,4 +90,3 @@ jobs:
             sudo docker-compose up -d --build springboot-app nginx
 
             sudo docker logs wook-nginx --tail=50
-            sudo docker logs certbot --tail=50
