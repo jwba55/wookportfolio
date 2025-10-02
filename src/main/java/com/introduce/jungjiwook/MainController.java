@@ -11,6 +11,12 @@ public class MainController {
     @GetMapping("/")
     public String getMain() {
 
+        return "portfolio";
+    }
+
+    @GetMapping("/aboutme")
+    public String getAboutMe() {
+
         return "aboutme";
     }
 
