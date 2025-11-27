@@ -2,38 +2,23 @@ version: "3.8"
 
 services:
   springboot-app:
-    image: wlwl45wl/wookportfolio:latest   # ← Docker Hub 이미지 (Actions가 최신 이미지를 push)
+    build: .
+    image: wlwl45wl/wookportfolio:latest
     container_name: springboot-app
-    env_file:
-      - .env
     ports:
       - "8089:8089"
     restart: always
 
   nginx:
-    image: wook-nginx:latest
+    build: ./nginx
     container_name: wook-nginx
     ports:
       - "80:80"
       - "443:443"
     volumes:
-      - ./nginx/conf.d:/etc/nginx/conf.d:ro
-      - ./certbot/conf:/etc/letsencrypt
-      - ./certbot/www:/var/lib/letsencrypt
+      - ./nginx/conf.d:/etc/nginx/conf.d:rw
+      - /etc/letsencrypt/live/wookportfolio.duckdns.org/fullchain.pem:/etc/nginx/certs/fullchain.pem:ro
+      - /etc/letsencrypt/live/wookportfolio.duckdns.org/privkey.pem:/etc/nginx/certs/privkey.pem:ro
     depends_on:
       - springboot-app
-    restart: always
-
-  certbot:
-    image: certbot/certbot
-    container_name: certbot
-    volumes:
-      - ./certbot/conf:/etc/letsencrypt
-      - ./certbot/www:/var/lib/letsencrypt
-    entrypoint: >
-      /bin/sh -c 'trap exit TERM;
-      while :;
-      do certbot renew --webroot -w /var/lib/letsencrypt --deploy-hook "nginx -s reload";
-      sleep 12h & wait $${!};
-      done;'
     restart: always

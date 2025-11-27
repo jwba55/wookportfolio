@@ -10,10 +10,10 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.introduce</groupId>
-	<artifactId>jungjiwook</artifactId>
+	<artifactId>wookportfolio</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
-	<name>jungjiwook</name>
+	<name>wookportfolio</name>
 	<description>Demo project for Spring Boot</description>
 	<url />
 	<licenses>

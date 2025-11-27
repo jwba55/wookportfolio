@@ -48,27 +48,45 @@ jobs:
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.HOST_PROD }}
+          port: 22
           username: ubuntu
           key: ${{ secrets.PRIVATE_KEY }}
           script: |
-            # SSH 접속 후 실행할 명령어들
-            cd ~/app || mkdir -p ~/app && cd ~/app
-            if [ ! -d ".git" ]; then
-              git clone https://github.com/사용자명/레포명.git .
+            APP_DIR=/home/ubuntu/wookportfolio
+
+            # Git clone 또는 pull
+            if [ ! -d "$APP_DIR/.git" ]; then
+              # 기존 소스 초기화
+              sudo rm -rf $APP_DIR
+              mkdir -p $APP_DIR
+
+              echo "Git 저장소 없음 → 클론 실행"
+              sudo git clone https://github.com/jwba55/wookportfolio.git .
             else
-              git reset --hard
-              git clean -fd
-              git pull origin main
+              echo "Git 저장소 있음 → 최신으로 pull"
+              cd $APP_DIR
+              sudo git reset --hard
+              sudo git clean -fd
+              sudo git pull origin main
             fi
-            
-            # Build Spring Boot jar
-            mvn clean package -DskipTests
 
-            # Docker Compose 재빌드 & 재시작
-            docker-compose down
-            docker-compose build --no-cache
-            docker-compose up -d
+            # Maven 빌드 (pom.xml 위치 확인)
+            cd $APP_DIR   # pom.xml이 있는 디렉터리
+            sudo mvn clean package -DskipTests
 
-            # Certbot 인증서 자동갱신 확인
-            docker-compose run --rm certbot renew --webroot -w /var/lib/letsencrypt
-            docker-compose exec nginx nginx -s reload
+            # 기존 컨테이너 중지 및 삭제
+            if [ $(sudo docker ps -q -f name=wookportfolio) ]; then
+              sudo docker stop wookportfolio
+              sudo docker rm wookportfolio
+            fi
+
+            # 최신 이미지 가져오기
+            sudo docker pull ${{ secrets.DOCKER_USERNAME }}/wookportfolio
+
+            sudo curl http://localhost/.well-known/acme-challenge/test
+
+            # Docker Compose로 springboot-app + nginx 실행
+            cd $APP_DIR
+            sudo docker-compose up -d --build springboot-app nginx
+
+            sudo docker logs wook-nginx --tail=50

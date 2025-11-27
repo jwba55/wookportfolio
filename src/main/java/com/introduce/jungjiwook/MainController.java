@@ -11,37 +11,7 @@ public class MainController {
     @GetMapping("/")
     public String getMain() {
 
-        return "aboutme";
-    }
-
-    @GetMapping("/topmenu")
-    public String topmenu() {
-        return "topmenu";
-    }
-
-    @GetMapping("/aboutMe")
-    public String aboutMe() {
-        return "aboutme";
-    }
-
-    @GetMapping("/portfolio")
-    public String portfolio() {
-        return "portfolio";
-    }
-
-    @GetMapping("/study")
-    public String study() {
-        return "study";
-    }
-
-    @GetMapping("/contact")
-    public String contact() {
-        return "contact";
-    }
-
-    @GetMapping("/portfolio/wandu")
-    public String portfoliWandu() {
-        return "portfolio/wandu";
+        return "index";
     }
 
 }
