@@ -11092,10 +11092,30 @@ header.masthead .masthead-heading {
   opacity: 1;
 }
 #portfolio .portfolio-item .portfolio-caption {
-  /* reduced padding to make captions more compact */
+  /* reduced padding to make captions more compact and enforce uniform height */
   padding: 1rem;
   text-align: center;
   background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* vertically center caption content */
+  align-items: center;
+  min-height: 5.5rem; /* ensure all captions have the same minimum height */
+}
+
+@media (min-width: 768px) {
+  /* slightly larger caption area on wider screens */
+  #portfolio .portfolio-item .portfolio-caption {
+    min-height: 6.5rem;
+  }
+}
+
+@media (max-width: 767.98px) {
+  /* make captions a bit shorter on small screens */
+  #portfolio .portfolio-item .portfolio-caption {
+    min-height: 4.5rem;
+    padding: 0.75rem;
+  }
 }
 #portfolio .portfolio-item .portfolio-caption .portfolio-caption-heading {
   font-size: 1.5rem;
