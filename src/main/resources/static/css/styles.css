@@ -11106,7 +11106,7 @@ header.masthead .masthead-heading {
 @media (min-width: 768px) {
   /* slightly larger caption area on wider screens */
   #portfolio .portfolio-item .portfolio-caption {
-    min-height: 6.5rem;
+    min-height: 8rem;
   }
 }
 
