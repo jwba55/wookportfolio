@@ -56,7 +56,7 @@ jobs:
 
             # Git clone 또는 pull
             if [ ! -d "$APP_DIR/.git" ]; then
-              # 기존 소스 초기화
+              # 기존 소스 초기화 
               sudo rm -rf $APP_DIR
               mkdir -p $APP_DIR
 
