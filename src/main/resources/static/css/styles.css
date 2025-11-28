@@ -11507,17 +11507,33 @@ header.masthead .masthead-subheading,
 }
 
 /* Portfolio: limit background/thumbnail height and make images cover the area */
+/* Make portfolio cards equal height using flexbox: columns stretch, item fills column.
+   Image area becomes the flexible region so total card heights match within each row. */
+#portfolio .row {
+  align-items: stretch; /* ensure bootstrap columns in this row stretch to same height */
+}
+#portfolio .portfolio-item {
+  display: flex;
+  flex-direction: column;
+  height: 100%; /* fill the column's full height */
+}
+#portfolio .portfolio-item .portfolio-link {
+  flex: 1 1 auto; /* image/link area grows to fill available space */
+  display: block;
+}
 #portfolio .portfolio-item .portfolio-link img,
 #portfolio .portfolio-item img {
   width: 100%;
-  height: 10rem; /* reduced thumbnail height */
+  height: 100%; /* fill the flexible area */
   object-fit: cover; /* crop/scale to fill the box */
   display: block;
 }
 
-@media (min-width: 768px) {
+@media (max-width: 767.98px) {
+  /* on small screens, keep images shorter for better scrolling */
   #portfolio .portfolio-item .portfolio-link img,
   #portfolio .portfolio-item img {
-    height: 12rem; /* slightly larger on md+ but smaller than before */
+    height: 10rem;
+    object-fit: cover;
   }
 }
