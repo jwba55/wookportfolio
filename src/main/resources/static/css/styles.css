@@ -85,6 +85,60 @@
   white-space: pre-line;
 }
 
+/* Ensure tech/detail modal doesn't become too narrow on large screens */
+#techInfoModal .modal-dialog {
+  max-width: 1000px; /* adjust as needed */
+}
+
+/* Scoped light gray border for images inside portfolioModal2 */
+#portfolioModal2 .modal-body img.img-fluid {
+  border: 1px solid rgba(0, 0, 0, 0.2); /* very light gray */
+  padding: 4px;
+  border-radius: 6px;
+  background-clip: padding-box;
+}
+
+/* Refined tech/link button style used for modal '링크' anchors */
+.tech-link-btn {
+  /* fallback styling in case .btn overrides; prefer using .btn.tech-link-btn below */
+  background: #FFC800;
+  color: #000;
+  border: 1px solid rgba(0,0,0,0.08);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+  border-radius: 0.5rem;
+  padding: 0.25rem 0.6rem;
+  font-weight: 600;
+  transition: transform 120ms ease, box-shadow 120ms ease, background-color 120ms ease;
+}
+
+/* Stronger selector to ensure default button state uses the brand color */
+.btn.tech-link-btn {
+  background-color: #FFC800 !important;
+  color: #000 !important;
+  border-color: rgba(0,0,0,0.08) !important;
+  background-image: none !important;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.06) !important;
+  /* Slightly larger appearance */
+  padding: .5rem .85rem !important;
+  font-size: .97rem !important;
+  border-radius: .45rem !important;
+}
+.btn.tech-link-btn:hover,
+.btn.tech-link-btn:focus {
+  background-color: #e6b800 !important;
+  color: #000 !important;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.10) !important;
+  text-decoration: none;
+}
+.btn.tech-link-btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255,200,0,0.18) !important;
+}
+
+/* Small spacing when buttons are inline */
+.tech-link-btn.me-2 { margin-right: 0.5rem; }
+
 *,
 *::before,
 *::after {
@@ -3426,12 +3480,28 @@ textarea.form-control-lg {
   display: none;
 }
 .dropstart .dropdown-toggle::before {
+
+/* Make link heading and buttons inline */
+ul.list-inline > h5 {
   display: inline-block;
-  margin-right: 0.255em;
-  vertical-align: 0.255em;
-  content: "";
-  border-top: 0.3em solid transparent;
-  border-right: 0.3em solid;
+  margin-right: 0.5rem;
+  vertical-align: middle;
+  margin-bottom: 0;
+  font-weight: 700;
+}
+
+/* Place buttons inline and aligned with the heading */
+ul.list-inline > a.tech-link-btn,
+ul.list-inline a.tech-link-btn,
+ul.list-inline > ol > li > a.tech-link-btn,
+ul.list-inline > ol > a.tech-link-btn {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 0.25rem;
+}
+
+/* If the <h5> is inline and there's no obvious gap, ensure some spacing */
+ul.list-inline > h5 + .tech-link-btn { margin-left: 0.5rem; }
   border-bottom: 0.3em solid transparent;
 }
 .dropstart .dropdown-toggle:empty::after {
@@ -10953,7 +11023,7 @@ header.masthead {
   padding-bottom: 6rem;
   text-align: center;
   color: #fff;
-  background-image: url("../img/bgImg.png"); 
+  background-image: url("../img/bgImg.png");
   background-repeat: no-repeat;
   background-attachment: scroll;
   background-position: center center;
@@ -11314,7 +11384,7 @@ header.masthead .masthead-heading {
 
 section#contact {
   background-color: #212529;
-  background-image: url("../assets/img/map-image.png");
+  background-image: url("../img/map-image.png");
   background-repeat: no-repeat;
   background-position: center;
 }

@@ -102,4 +102,81 @@ document.addEventListener('DOMContentLoaded', function () {
             techModal.show();
         });
     });
+
+    // Move each modal's "링크:" `ul.list-inline` directly under that modal's first media (image or video)
+    // This avoids editing multiple HTML blocks — it relocates the existing link lists at runtime.
+    const modalBodies = document.querySelectorAll('.portfolio-modal .modal-body');
+    modalBodies.forEach(modal => {
+        const uls = modal.querySelectorAll('ul.list-inline');
+        let targetUl = null;
+        uls.forEach(ul => {
+            // Robust detection: check textContent OR an h5 child with '링크'
+            const hasText = ul.textContent && ul.textContent.indexOf('링크') !== -1;
+            const h5 = ul.querySelector('h5');
+            const hasH5 = h5 && h5.textContent && h5.textContent.indexOf('링크') !== -1;
+            if (hasText || hasH5) {
+                targetUl = ul;
+            }
+        });
+        if (targetUl) {
+            // Find the first media element (image or video) inside the modal
+            const firstMedia = modal.querySelector('img.img-fluid, video.img-fluid');
+            if (firstMedia) {
+                // If the UL is already immediately after the media, skip
+                if (firstMedia.nextElementSibling !== targetUl) {
+                    firstMedia.insertAdjacentElement('afterend', targetUl);
+                }
+            }
+        }
+    });
+
+    // Convert anchors inside the moved '링크' ULs into Bootstrap buttons
+    modalBodies.forEach(modal => {
+        const uls = modal.querySelectorAll('ul.list-inline');
+        uls.forEach(ul => {
+            const h5 = ul.querySelector('h5');
+            if (h5 && h5.textContent && h5.textContent.indexOf('링크') !== -1) {
+                const anchors = ul.querySelectorAll('a[href]');
+                anchors.forEach(a => {
+                    // Add Bootstrap sizing class and a custom class for refined styling
+                    a.classList.add('btn', 'btn-sm', 'tech-link-btn', 'me-2');
+                    // Remove inline color attributes if any
+                    a.removeAttribute('style');
+                });
+                // If anchors are nested (e.g., inside an <ol>), move them so they appear
+                // right after the <h5> heading inside this UL, which places the buttons
+                // visually next to the "링크:" label.
+                const heading = ul.querySelector('h5');
+                if (heading) {
+                    anchors.forEach(a => {
+                        if (a.parentElement !== ul || heading.nextElementSibling !== a) {
+                            heading.insertAdjacentElement('afterend', a);
+                        }
+                    });
+                }
+            }
+        });
+    });
+
+    // If there's a '차별화 기능' trigger button, make it scroll to the specific 상세보기 anchor
+    const diffBtn = document.getElementById('diffFeatureBtn');
+    const authDetail = document.getElementById('authDetail');
+    if (diffBtn && authDetail) {
+        diffBtn.addEventListener('click', function (e) {
+            e.preventDefault();
+            // Smooth scroll to the 상세보기 anchor
+            try {
+                authDetail.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            } catch (err) {
+                // fallback
+                authDetail.scrollIntoView();
+            }
+            // After scrolling, trigger the detail-link click to open the modal
+            window.setTimeout(function () {
+                authDetail.click();
+                // move focus to the anchor for accessibility
+                authDetail.focus && authDetail.focus();
+            }, 600);
+        });
+    }
 });
