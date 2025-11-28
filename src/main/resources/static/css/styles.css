@@ -11106,14 +11106,14 @@ header.masthead .masthead-heading {
 @media (min-width: 768px) {
   /* slightly larger caption area on wider screens */
   #portfolio .portfolio-item .portfolio-caption {
-    min-height: 8rem;
+    min-height: 10rem;
   }
 }
 
 @media (max-width: 767.98px) {
   /* make captions a bit shorter on small screens */
   #portfolio .portfolio-item .portfolio-caption {
-    min-height: 4.5rem;
+    min-height: 6rem;
     padding: 0.75rem;
   }
 }
