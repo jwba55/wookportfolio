@@ -11518,22 +11518,30 @@ header.masthead .masthead-subheading,
   height: 100%; /* fill the column's full height */
 }
 #portfolio .portfolio-item .portfolio-link {
-  flex: 1 1 auto; /* image/link area grows to fill available space */
+  /* keep image area a fixed maximum height so cards remain compact */
+  flex: 0 0 auto;
   display: block;
+  max-height: 10rem; /* default max height for image container */
+  overflow: hidden;
 }
 #portfolio .portfolio-item .portfolio-link img,
 #portfolio .portfolio-item img {
   width: 100%;
-  height: 100%; /* fill the flexible area */
+  height: 100%; /* fill the container's height */
   object-fit: cover; /* crop/scale to fill the box */
   display: block;
 }
 
+@media (min-width: 768px) {
+  /* slightly taller on medium+ screens but still reduced */
+  #portfolio .portfolio-item .portfolio-link {
+    max-height: 12rem;
+  }
+}
+
 @media (max-width: 767.98px) {
-  /* on small screens, keep images shorter for better scrolling */
-  #portfolio .portfolio-item .portfolio-link img,
-  #portfolio .portfolio-item img {
-    height: 10rem;
-    object-fit: cover;
+  /* smaller images on small screens for better scrolling */
+  #portfolio .portfolio-item .portfolio-link {
+    max-height: 8rem;
   }
 }
