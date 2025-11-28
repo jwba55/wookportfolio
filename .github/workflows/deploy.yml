@@ -75,9 +75,9 @@ jobs:
             sudo mvn clean package -DskipTests
 
             # 기존 컨테이너 중지 및 삭제
-            if [ $(sudo docker ps -a -q -f name=wookportfolio) ]; then
-              sudo docker stop wookportfolio
-              sudo docker rm wookportfolio
+            if [ $(sudo docker ps -a -q -f name=springboot-app) ]; then
+              sudo docker stop springboot-app
+              sudo docker rm springboot-app
             fi
 
             # 최신 이미지 가져오기
