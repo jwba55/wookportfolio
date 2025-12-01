@@ -11572,7 +11572,7 @@ header.masthead .masthead-subheading,
 /* Per-line spacing inside masthead-subheading */
 .masthead-subheading p {
   margin: 0 0 0.6rem 0; /* space between lines */
-  font-size: 1.25rem; /* slightly larger paragraph text on small screens */
+  font-size: 1.35rem; /* slightly larger paragraph text on small screens */
   line-height: 1.4;
 }
 
