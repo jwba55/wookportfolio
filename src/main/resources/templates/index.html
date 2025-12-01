@@ -44,7 +44,7 @@
                         <div class="masthead-subheading">
                             <p>문제 해결을 통해 성장하는<br><span class="masthead-highlight">Backend-Developer 정지욱</span><span style="color: #ffc800;">입니다.</span></p>
                             <br><br>
-                            <p class="profile-description">서비스의 본질을 이해하고 구조적으로 코드를 설계합니다. <br>안정적으로 운영되고 팀이 신뢰할 수 있는 코드를 개발합니다.</p>
+                            <p><span class="profile-description">서비스의 본질을 이해하고 구조적으로 코드를 설계합니다. <br>안정적으로 운영되고 팀이 신뢰할 수 있는 코드를 개발합니다.</span></p>
                         </div>
                     </div>
                 </div>
@@ -1120,7 +1120,7 @@
                                             <div class="responsibilities">
                                                 <ol>
                                                     <li>
-                                                        <strong>주제 선정</strong>
+                                                        <strong>시스템 구조</strong>
                                                         <ol class="paren-ol mb-0">
                                                             <li>
                                                                 <strong>문제</strong>
@@ -1394,7 +1394,7 @@
                 </div>
             </div>
         </div>
-        <!-- Portfolio item 4 modal popup-->
+                <!-- Portfolio item 4 modal popup-->
         <div class="portfolio-modal modal fade" id="portfolioModal4" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -1404,20 +1404,173 @@
                             <div class="col-lg-8">
                                 <div class="modal-body">
                                     <!-- Project details-->
-                                    <h2 class="text-uppercase">Project Name</h2>
-                                    <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
-                                    <img class="img-fluid d-block mx-auto" src="/img/portfolio/4.jpg" alt="..." />
-                                    <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
+                                    <h2 class="text-uppercase">마이그레이션</h2>
+                                    <p class="item-intro text-muted">개인 프로젝트로 진행한 음악 판매 및 공유 사이트의 일부를 <br>
+                                        Express.js, EJS, mongoDB로 마이그레이션한 프로젝트입니다.</p>
+                                    <img class="img-fluid d-block mx-auto" src="/img/portfolio/mygration.png" alt="..." />
+
                                     <ul class="list-inline">
                                         <li>
-                                            <strong>Client:</strong>
-                                            Lines
-                                        </li>
-                                        <li>
-                                            <strong>Category:</strong>
-                                            Branding
+                                            <h5>프로젝트 주제 선정이유:</h5>
+                                            기존 Spring Legacy 기반 프로젝트를 Express.js, EJS, MongoDB 스택으로 전환(Migration)한 <br> 주요 목적은 다음과 같습니다.
+                                            <ul>
+                                                <li><strong>백엔드 스택 확장 (Express.js):</strong><br>현대 웹 개발에서 중요한 Node.js 기반의 비동기 아키텍처와 간결한 Express.js 프레임워크를 <br> 학습하여 풀스택 개발 역량을 강화하고자 했습니다.</li>
+                                                <li><strong>비정형 데이터베이스 경험 (MongoDB):</strong> <br>기존 RDB 경험에서 벗어나, 데이터 모델링의 유연성과 확장성이 뛰어난 MongoDB (NoSQL)를<br> 다뤄봄으로써 데이터 처리 방식에 대한 이해를 넓히고자 했습니다.</li>
+                                                <li><strong>기술 스택 전환 경험:</strong> <br>익숙하지 않은 새로운 기술 스택을 도입하여 기존 프로젝트를 재구축하는 과정을 통해,<br> 현업 수준의 기술 전환 및 통합 능력을 배양하고자 했습니다.</li>
+                                                <li><strong>현업 수준의 기술 전환 경험:</strong><br>기존 프로젝트를 새로운 기술 스택으로 마이그레이션하는 과정을 통해, 실제 업무 환경에서 <br>발생할 수 있는 기술 전환 및 통합 문제를 해결하는 능력을 기르고자 했습니다.</li>
+                                            </ul>
                                         </li>
                                     </ul>
+                                    <ul class="list-inline">
+                                        <li class="tech-stack-list">
+                                            <h5>기술 스택:</h5>
+                                            <span style="color:red"> (아이콘을 클릭하면 선택 이유가 나옵니다.)</span>
+                                            <div class="tech-stack">
+                                                <div class="tech-item" data-tech="ExpressJS" data-desc="학교에서 제공받은 교육이 Spring Legacy 였기에 익숙함에 사용하게 되었습니다."><i class="fab fa-node-js" aria-hidden="true"></i><div class="tech-label">ExpressJS</div></div>
+                                                <div class="tech-item" data-tech="MongoDB" data-desc="학교에서 제공하는 DBMS여서 익숙하고, SQL 표준을 잘 준수해 학습에 유리하여 선택했습니다."><i class="fas fa-database" aria-hidden="true"></i><div class="tech-label">MongoDB</div></div>
+                                                <div class="tech-item" data-tech="EJS" data-desc="서버사이드 렌더링을 위한 전통적 뷰 기술로, 웹의 기본 동작 원리를 이해하기 위해 사용했습니다."><i class="fab fa-node-js" aria-hidden="true"></i><div class="tech-label">EJS</div></div>
+                                                <div class="tech-item" data-tech="HTML" data-desc="프론트엔드의 기본 구조를 구성하기 위해 HTML을 사용했습니다."><i class="fab fa-html5" aria-hidden="true"></i><div class="tech-label">HTML</div></div>
+                                                <div class="tech-item" data-tech="CSS" data-desc="레이아웃과 스타일링을 위해 CSS를 사용했습니다. 반응형 디자인도 적용했습니다."><i class="fab fa-css3-alt" aria-hidden="true"></i><div class="tech-label">CSS</div></div>
+                                                <div class="tech-item" data-tech="JavaScript" data-desc="클라이언트 상호작용과 간단한 UI 제어 및 비동기 통신을 위해 JavaScript를 사용했습니다."><i class="fab fa-js" aria-hidden="true"></i><div class="tech-label">JavaScript</div></div>
+                                            </div>
+                                        </li>
+                                    </ul>
+
+                                    <ul class="list-inline">
+                                        <li>
+                                            <h5>기간: </h5>
+                                            2023.09 ~ 2023.12
+                                        </li>
+                                        <br>
+                                        <li>
+                                            <h5>프로젝트 유형:</h5>
+                                            개인 프로젝트
+                                        </li>
+                                    </ul>
+
+                                    <ul class="list-inline">
+                                        <br>
+                                        <h5>링크:</h5>
+                                        <a class="btn tech-link-btn btn-sm me-2" target="_blank" rel="noopener noreferrer" style="color:red" href="https://github.com/jwba55/workspace-node" aria-label="상세 코드 보기 - GitHub">
+                                            <i class="fab fa-github me-1" aria-hidden="true"></i>상세 코드 보기
+                                        </a>
+                                    </ul>
+                                    <ul class="list-inline">
+                                        <li>
+                                            <h5>주요 기능:</h5>
+                                            <ul class="mb-2">
+                                                <li>회원가입/로그인, 마이페이지, 메인페이지 </li>
+                                            </ul>
+
+                                            <h5>담당 역할:</h5>
+                                            <style>
+                                                /* Local style: render ordered list as 1) 2) 3) for this modal */
+                                                .paren-ol { counter-reset: paren-counter; list-style: none; padding-left: 0; margin-left: 0; }
+                                                .paren-ol > li { counter-increment: paren-counter; margin-bottom: .25rem; padding-left: 1.6rem; position: relative; }
+                                                .paren-ol > li::before { content: counter(paren-counter) ") "; position: absolute; left: 0; font-weight: 700; }
+                                            </style>
+                                            <div class="responsibilities">
+                                                <ol>
+                                                    <li>
+                                                        <strong> 기획</strong>
+                                                        <ul>
+                                                            <li>요구사항 분석 및 기능 명세서 작성</li>
+                                                            <li>DB 설계 및 ERD 작성</li>
+                                                        </ul>
+                                                    </li>
+
+                                                    <li>
+                                                        <strong> 백엔드 개발 전반 (구현, 테스트)</strong>
+                                                        <ul>
+                                                            <li>회원가입/로그인, 마이페이지</li>
+                                                            <li>조회, 입력, 수정, 삭제에 대한 DB연결</li>
+                                                        </ul>
+                                                    </li>
+
+                                                    <li>
+                                                        <strong> 프론트엔드(기능 별 분배)</strong>
+                                                        <ul>
+                                                            <li>EJS 기반 UI 개발</li>
+                                                            <li>사용자 경험(UX) 개선</li>
+                                                        </ul>
+                                                    </li>
+                                                </ol>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                    
+                                    <ul class="list-inline">
+                                        <li>
+                                            <h5>메인페이지: </h5>
+                                            <p class="mt-2">C:import를 사용하여 네비게이션바, footer, 활동 영상, 플레이리스트페이지를 각각 불러와서 보여줌.
+                                                <br>JavaScript를 사용하여 활동 영상을 3초 단위로 자동 슬라이드.
+                                            </p>
+                                            <img class="img-fluid d-block mx-auto" src="/img/portfolio/mainpage.png" alt="..." />
+                                        </li>
+                                        <li>
+                                            <h5>회원가입/로그인 페이지: </h5>
+                                            <p class="mt-2">
+                                                Session을 사용하여 로그인 여부를 확인하고 회원에게는 로그아웃/파이페이지,<br>
+                                                비회원에게는 회원가입/로그인 버튼이 보이게 함.
+                                            </p>
+                                            <img class="img-fluid d-block mx-auto" src="/img/portfolio/loginpage.png" alt="..." />
+                                        </li>
+                                        <li>
+                                            <h5>마이 페이지: </h5>
+                                            <p class="mt-2">
+                                                등록된 모든 곡 정보를 불러와서 보여줌.<br>
+                                            </p>
+                                            <img class="img-fluid d-block mx-auto" src="/img/portfolio/attendancepage.png" alt="..." />
+                                        </li>
+                                        <li>
+                                            <h5>곡 등록 페이지: </h5>
+                                            <p class="mt-2">
+                                                Session에 저장된 role 값에 따라 일반 회원은 무료 공유만 가능하고 파트너 회원은 유료 판매도 가능하게 함. <br>
+                                                파일 명과 UUID를 저장하고 파일의 확장자를 구분하여 음성 파일만 업로드 가능하게함.<br>
+                                            </p>
+                                            <img class="img-fluid d-block mx-auto" src="/img/portfolio/itempage.png" alt="..." />
+                                        </li>
+                                        <li>
+                                            <h5>순위 페이지: </h5>
+                                            <p class="mt-2">
+                                                Component에 작성한 Scheduler를 사용하여 일간,주간,월간 별로 조회수를 초기화하고 랭킹을 갱신함.<br>
+                                            </p>
+                                            <img class="img-fluid d-block mx-auto" src="/img/portfolio/uploadpage.png" alt="..." />
+                                        </li>
+                                        <li>
+                                            <h5>상품 상세 페이지: </h5>
+                                            <p class="mt-2">
+                                                상품의 상세 정보 및 등록된 파일을 확인하고, 리뷰를 남기거나 구매할 수 있도록 함.<br>
+                                            </p>
+                                            <img class="img-fluid d-block mx-auto" src="/img/portfolio/itemdetailpage.png" alt="..." />
+                                        </li>
+                                        <li>
+                                            <h5>플레이리스트 페이지: </h5>
+                                            <p class="mt-2">
+                                                저장되어 있는 모든 플레이리스트를 불러와서 보여줌.<br>
+                                                멜론 처럼 각각의 다른 회원들이 설정한 플레이리스트를 확인하고 불러올 수 있도록 함.
+                                            </p>
+                                            <img class="img-fluid d-block mx-auto" src="/img/portfolio/boardpage.png" alt="..." />
+                                        </li>
+                                        <li>
+                                            <h5>플레이리스트 등록 페이지:</h5>
+                                            <p class="mt-2">
+                                                플레이리스트 명을 입력하고 저장 버튼을 누르면 플레이리스트가 등록됨.<br>
+                                                생성된 플레이리스트에 내가 선택한 곡을 담을 수 있게 함.(장바구니 같은 형태)
+                                            </p>
+                                            <img class="img-fluid d-block mx-auto" src="/img/portfolio/orderpage.png" alt="..." />
+                                        </li>
+                                        <li>
+                                            <h5>이벤트 페이지:</h5>
+                                            <p class="mt-2">
+                                                관리자가 작성한 이벤트 및 공지사항을 확인할 수 있도록 함.
+                                            </p>
+                                            <img class="img-fluid d-block mx-auto" src="/img/portfolio/orderpage.png" alt="..." />
+                                        </li>
+                                    </ul>
+                                    <br>
+                                    
+                                    <!-- Tech info modal (removed duplicate here) -->
                                     <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
                                         <i class="fas fa-xmark me-1"></i>
                                         Close Project
