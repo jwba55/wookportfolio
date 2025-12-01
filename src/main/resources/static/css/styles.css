@@ -11522,11 +11522,9 @@ header.masthead .masthead-subheading,
   /* typography improvements for masthead description */
   font-family: "Roboto Slab", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-style: normal; /* avoid italic for readability */
-  font-weight: 300;
   color: rgba(255,255,255,0.95);
   font-size: 0.98rem; /* slightly larger for readability */
-  line-height: 1.6; /* more comfortable for multi-line text */
-  letter-spacing: 0.02em; /* subtle tracking */
+  line-height: 1.4; /* more comfortable for multi-line text */
   margin: 0;
   padding: 0;
 }
@@ -11555,7 +11553,7 @@ header.masthead .masthead-subheading,
     height: 200px;
   }
   .masthead-text {
-    max-width: 55ch; /* larger on md+ to use more horizontal space */
+    max-width: 60ch; /* larger on md+ to use more horizontal space */
     text-align: left; /* left-align on md+ for easier reading */
   }
   .masthead-photo-wrapper {
@@ -11574,8 +11572,8 @@ header.masthead .masthead-subheading,
 /* Per-line spacing inside masthead-subheading */
 .masthead-subheading p {
   margin: 0 0 0.6rem 0; /* space between lines */
-  font-size: 1.12rem; /* slightly larger paragraph text on small screens */
-  line-height: 1.6;
+  font-size: 1.25rem; /* slightly larger paragraph text on small screens */
+  line-height: 1.4;
 }
 
 /* Slight subtle text shadow to improve contrast over background */
