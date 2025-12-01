@@ -305,7 +305,7 @@ sup {
   border-radius: 0.18rem;
   display: inline-block;
   line-height: 1.2;
-  font-size: 1.3em;
+  font-size: 1.4em;
 }
 
 sub {
@@ -11553,7 +11553,7 @@ header.masthead .masthead-subheading,
     height: 200px;
   }
   .masthead-text {
-    max-width: 60ch; /* larger on md+ to use more horizontal space */
+    max-width: 68ch; /* larger on md+ to use more horizontal space */
     text-align: left; /* left-align on md+ for easier reading */
   }
   .masthead-photo-wrapper {
