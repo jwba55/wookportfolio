@@ -306,7 +306,6 @@ sup {
   border-radius: 0.18rem;
   display: inline-block;
   line-height: 1.2;
-  font-size: 1.4em;
 }
 
 /* Style for second masthead paragraph - light weight and 24pt size */
@@ -11048,7 +11047,7 @@ header.masthead {
   background-size: cover;
 }
 header.masthead .masthead-subheading {
-  font-size: 1.5rem;
+  font-size: 2.5rem;
   font-style: italic;
   line-height: 1.5rem;
   margin-bottom: 25px;
@@ -11068,7 +11067,7 @@ header.masthead .masthead-heading {
     padding-bottom: 4rem;
   }
   header.masthead .masthead-subheading {
-    font-size: 2.25rem;
+    font-size: 2.5rem;
     font-style: italic;
     line-height: 2.25rem;
     margin-bottom: 2rem;
@@ -11538,7 +11537,7 @@ header.masthead .masthead-subheading,
 
 /* Masthead photo + text layout */
 .masthead-text {
-  max-width: 64ch; /* increased line length so the block is wider */
+  max-width: 130ch; /* increased line length so the block is wider */
   text-align: center; /* default center on small screens; md+ will shift left */
 }
 .masthead-photo {
@@ -11563,14 +11562,14 @@ header.masthead .masthead-subheading,
   }
   /* make the paragraphs inside masthead-subheading larger on md+ */
   .masthead-subheading p {
-    font-size: 1.25rem;
+    font-size: 2rem;
   }
 }
 
 /* Per-line spacing inside masthead-subheading */
 .masthead-subheading p {
   margin: 0 0 0.6rem 0; /* space between lines */
-  font-size: 1.35rem; /* slightly larger paragraph text on small screens */
+  font-size: 2.5rem; /* slightly larger paragraph text on small screens */
   line-height: 1.4;
 }
 
