@@ -11537,7 +11537,7 @@ header.masthead .masthead-subheading,
 
 /* Masthead photo + text layout */
 .masthead-text {
-  max-width: 130ch; /* increased line length so the block is wider */
+  max-width: 64ch; /* increased line length so the block is wider */
   text-align: center; /* default center on small screens; md+ will shift left */
 }
 .masthead-photo {
@@ -11553,7 +11553,7 @@ header.masthead .masthead-subheading,
     height: 200px;
   }
   .masthead-text {
-    max-width: 68ch; /* larger on md+ to use more horizontal space */
+    max-width: 130ch; /* larger on md+ to use more horizontal space */
     text-align: left; /* left-align on md+ for easier reading */
   }
   header.masthead .masthead-subheading,
