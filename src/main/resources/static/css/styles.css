@@ -11243,7 +11243,7 @@ header.masthead .masthead-heading {
 .portfolio-modal .tech-item .tech-label {
   margin-top: 0.35rem;
   font-size: 0.9rem;
-  color: #fff;
+  color: #000;
 }
 
 @media (max-width: 576px) {

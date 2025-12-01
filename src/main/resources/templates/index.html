@@ -1426,9 +1426,9 @@
                                             <h5>기술 스택:</h5>
                                             <span style="color:red"> (아이콘을 클릭하면 선택 이유가 나옵니다.)</span>
                                             <div class="tech-stack">
-                                                <div class="tech-item" data-tech="ExpressJS" data-desc="학교에서 제공받은 교육이 Spring Legacy 였기에 익숙함에 사용하게 되었습니다."><i class="fab fa-node-js" aria-hidden="true"></i><div class="tech-label">ExpressJS</div></div>
-                                                <div class="tech-item" data-tech="MongoDB" data-desc="학교에서 제공하는 DBMS여서 익숙하고, SQL 표준을 잘 준수해 학습에 유리하여 선택했습니다."><i class="fas fa-database" aria-hidden="true"></i><div class="tech-label">MongoDB</div></div>
-                                                <div class="tech-item" data-tech="EJS" data-desc="서버사이드 렌더링을 위한 전통적 뷰 기술로, 웹의 기본 동작 원리를 이해하기 위해 사용했습니다."><i class="fab fa-node-js" aria-hidden="true"></i><div class="tech-label">EJS</div></div>
+                                                <div class="tech-item" data-tech="ExpressJS" data-desc="현업에서 많이 사용하는 기술 스택 중 하나를 익히고 싶어서 사용했습니다."><i class="fab fa-node-js" aria-hidden="true"></i><div class="tech-label">ExpressJS</div></div>
+                                                <div class="tech-item" data-tech="MongoDB" data-desc="ExpressJS는 async-await구조로 비동기처리에 유리함으로 비동기 처리와 잘 맞는 비정형 데이터 중 으뜸이라고 알고있는 MongoDB를 사용했습니다."><i class="fas fa-database" aria-hidden="true"></i><div class="tech-label">MongoDB</div></div>
+                                                <div class="tech-item" data-tech="EJS" data-desc="JSP와 가장 유사하게 사용할 수 있는 기술로서 EJS를 택했습니다."><i class="fab fa-node-js" aria-hidden="true"></i><div class="tech-label">EJS</div></div>
                                                 <div class="tech-item" data-tech="HTML" data-desc="프론트엔드의 기본 구조를 구성하기 위해 HTML을 사용했습니다."><i class="fab fa-html5" aria-hidden="true"></i><div class="tech-label">HTML</div></div>
                                                 <div class="tech-item" data-tech="CSS" data-desc="레이아웃과 스타일링을 위해 CSS를 사용했습니다. 반응형 디자인도 적용했습니다."><i class="fab fa-css3-alt" aria-hidden="true"></i><div class="tech-label">CSS</div></div>
                                                 <div class="tech-item" data-tech="JavaScript" data-desc="클라이언트 상호작용과 간단한 UI 제어 및 비동기 통신을 위해 JavaScript를 사용했습니다."><i class="fab fa-js" aria-hidden="true"></i><div class="tech-label">JavaScript</div></div>
@@ -1439,7 +1439,7 @@
                                     <ul class="list-inline">
                                         <li>
                                             <h5>기간: </h5>
-                                            2023.09 ~ 2023.12
+                                            2024.11 ~ 2024.11
                                         </li>
                                         <br>
                                         <li>
@@ -1502,7 +1502,7 @@
                                     <ul class="list-inline">
                                         <li>
                                             <h5>메인페이지: </h5>
-                                            <p class="mt-2">C:import를 사용하여 네비게이션바, footer, 활동 영상, 플레이리스트페이지를 각각 불러와서 보여줌.
+                                            <p class="mt-2">include와 라우터를 사용하여 네비게이션바, footer, 활동 영상, 플레이리스트페이지를 각각 불러와서 보여줌.
                                                 <br>JavaScript를 사용하여 활동 영상을 3초 단위로 자동 슬라이드.
                                             </p>
                                             <img class="img-fluid d-block mx-auto" src="/img/portfolio/mainpage.png" alt="..." />
@@ -1518,54 +1518,10 @@
                                         <li>
                                             <h5>마이 페이지: </h5>
                                             <p class="mt-2">
-                                                등록된 모든 곡 정보를 불러와서 보여줌.<br>
+                                                로그인 한 사용자의 정보를 불러와서 보여줌.<br>
+                                                해당 정보를 수정 가능하게 함.
                                             </p>
                                             <img class="img-fluid d-block mx-auto" src="/img/portfolio/attendancepage.png" alt="..." />
-                                        </li>
-                                        <li>
-                                            <h5>곡 등록 페이지: </h5>
-                                            <p class="mt-2">
-                                                Session에 저장된 role 값에 따라 일반 회원은 무료 공유만 가능하고 파트너 회원은 유료 판매도 가능하게 함. <br>
-                                                파일 명과 UUID를 저장하고 파일의 확장자를 구분하여 음성 파일만 업로드 가능하게함.<br>
-                                            </p>
-                                            <img class="img-fluid d-block mx-auto" src="/img/portfolio/itempage.png" alt="..." />
-                                        </li>
-                                        <li>
-                                            <h5>순위 페이지: </h5>
-                                            <p class="mt-2">
-                                                Component에 작성한 Scheduler를 사용하여 일간,주간,월간 별로 조회수를 초기화하고 랭킹을 갱신함.<br>
-                                            </p>
-                                            <img class="img-fluid d-block mx-auto" src="/img/portfolio/uploadpage.png" alt="..." />
-                                        </li>
-                                        <li>
-                                            <h5>상품 상세 페이지: </h5>
-                                            <p class="mt-2">
-                                                상품의 상세 정보 및 등록된 파일을 확인하고, 리뷰를 남기거나 구매할 수 있도록 함.<br>
-                                            </p>
-                                            <img class="img-fluid d-block mx-auto" src="/img/portfolio/itemdetailpage.png" alt="..." />
-                                        </li>
-                                        <li>
-                                            <h5>플레이리스트 페이지: </h5>
-                                            <p class="mt-2">
-                                                저장되어 있는 모든 플레이리스트를 불러와서 보여줌.<br>
-                                                멜론 처럼 각각의 다른 회원들이 설정한 플레이리스트를 확인하고 불러올 수 있도록 함.
-                                            </p>
-                                            <img class="img-fluid d-block mx-auto" src="/img/portfolio/boardpage.png" alt="..." />
-                                        </li>
-                                        <li>
-                                            <h5>플레이리스트 등록 페이지:</h5>
-                                            <p class="mt-2">
-                                                플레이리스트 명을 입력하고 저장 버튼을 누르면 플레이리스트가 등록됨.<br>
-                                                생성된 플레이리스트에 내가 선택한 곡을 담을 수 있게 함.(장바구니 같은 형태)
-                                            </p>
-                                            <img class="img-fluid d-block mx-auto" src="/img/portfolio/orderpage.png" alt="..." />
-                                        </li>
-                                        <li>
-                                            <h5>이벤트 페이지:</h5>
-                                            <p class="mt-2">
-                                                관리자가 작성한 이벤트 및 공지사항을 확인할 수 있도록 함.
-                                            </p>
-                                            <img class="img-fluid d-block mx-auto" src="/img/portfolio/orderpage.png" alt="..." />
                                         </li>
                                     </ul>
                                     <br>
