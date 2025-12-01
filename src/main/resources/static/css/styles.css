@@ -11598,3 +11598,14 @@ header.masthead .masthead-subheading,
     height: 12rem; /* slightly larger on md+ but smaller than before */
   }
 }
+
+/* Reduce portfolio modal width while keeping tech info modal unchanged */
+.portfolio-modal .modal-dialog {
+  max-width: 800px; /* narrower width for portfolio project modals */
+}
+
+@media (min-width: 992px) {
+  .portfolio-modal .modal-dialog {
+    max-width: 900px; /* slightly wider on large screens but still narrower than default */
+  }
+}
