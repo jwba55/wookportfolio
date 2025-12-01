@@ -298,6 +298,7 @@ sup {
 }
 /* Highlight only the exact phrase in the masthead */
 .masthead-highlight {
+  font-size: 3.125rem;
   color: #ffc800; /* brand yellow */
   font-weight: 700; /* bold for emphasis */
   background: rgba(255,200,0,0.08); /* subtle highlight */
@@ -306,6 +307,12 @@ sup {
   display: inline-block;
   line-height: 1.2;
   font-size: 1.4em;
+}
+
+/* Style for second masthead paragraph - light weight and 24pt size */
+.masthead-subheading p:nth-child(2) {
+  font-weight: 300;
+  font-size: 2rem;
 }
 
 sub {
@@ -11034,7 +11041,7 @@ header.masthead {
   padding-bottom: 6rem;
   text-align: center;
   color: #fff;
-  background-image: url("../img/bgImg.png");
+  background-image: url("../img/bgImg.jpg");
   background-repeat: no-repeat;
   background-attachment: scroll;
   background-position: center center;
@@ -11540,12 +11547,6 @@ header.masthead .masthead-subheading,
   object-fit: cover;
   border: 6px solid rgba(0,0,0,0.15);
 }
-.masthead-photo-wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-left: 1.5rem; /* push photo slightly to the right */
-}
 
 @media (min-width: 768px) {
   .masthead-photo {
@@ -11555,9 +11556,6 @@ header.masthead .masthead-subheading,
   .masthead-text {
     max-width: 68ch; /* larger on md+ to use more horizontal space */
     text-align: left; /* left-align on md+ for easier reading */
-  }
-  .masthead-photo-wrapper {
-    margin-left: 2.5rem; /* larger gap on wider screens */
   }
   header.masthead .masthead-subheading,
   .masthead-subheading {
