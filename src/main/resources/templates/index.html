@@ -1196,192 +1196,18 @@
                                         </a>
                                     </ul>
                                     <ul class="list-inline">
-                                        <li>
-                                            <h5>주요 기능:</h5>
-                                            <ul class="mb-2">
-                                                <li>회원가입/로그인, 마이페이지, 음원 조회 및 재생, 파일 업로드, 플레이리스트, 거래 시스템, 랭킹시스템 </li>
-                                            </ul>
-
-                                            <h5>담당 역할:</h5>
-                                            <style>
-                                                /* Local style: render ordered list as 1) 2) 3) for this modal */
-                                                .paren-ol { counter-reset: paren-counter; list-style: none; padding-left: 0; margin-left: 0; }
-                                                .paren-ol > li { counter-increment: paren-counter; margin-bottom: .25rem; padding-left: 1.6rem; position: relative; }
-                                                .paren-ol > li::before { content: counter(paren-counter) ") "; position: absolute; left: 0; font-weight: 700; }
-                                            </style>
-                                            <div class="responsibilities">
-                                                <ol>
-                                                    <li>
-                                                        <strong> 기획</strong>
-                                                        <ul>
-                                                            <li>요구사항 분석 및 기능 명세서 작성</li>
-                                                            <li>DB 설계 및 ERD 작성</li>
-                                                        </ul>
-                                                    </li>
-
-                                                    <li>
-                                                        <strong> 백엔드 개발 전반 (구현, 테스트)</strong>
-                                                        <ul>
-                                                            <li>회원가입/로그인, 마이페이지, 음원 조회 및 재생, 파일 업로드, 플레이리스트, 거래 시스템, 랭킹시스템</li>
-                                                            <li>각 조회, 입력, 수정, 삭제에 대한 쿼리 작성</li>
-                                                        </ul>
-                                                    </li>
-
-                                                    <li>
-                                                        <strong> 프론트엔드(기능 별 분배)</strong>
-                                                        <ul>
-                                                            <li>JSP 기반 UI 개발</li>
-                                                            <li>사용자 경험(UX) 개선</li>
-                                                        </ul>
-                                                    </li>
-                                                </ol>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                    <ul class="list-inline">
-                                        <h5>테이블 명세표:</h5>
-                                    </ul>
-
-                                    <div class="table-responsive mt-3">
-                                        <table class="table table-sm table-striped table-bordered">
-                                            <thead class="table-light">
-                                                <tr>
-                                                    <th>테이블명</th>
-                                                    <th>PK</th>
-                                                    <th>FK</th>
-                                                    <th>설명</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>Users</td>
-                                                    <td>userId</td>
-                                                    <td>-</td>
-                                                    <td>사용자 계정의 핵심 정보(아이디, 비밀번호, 이메일 수신여부, 역할 등)를 관리합니다.</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>MusicInfo</td>
-                                                    <td>plnum</td>
-                                                    <td>userId</td>
-                                                    <td>사용자가 등록한 곡의 정보(곡 명, 판매자, 가격, 장르 등)를 관리합니다.</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Fileupload</td>
-                                                    <td>filenum</td>
-                                                    <td>plnum</td>
-                                                    <td>사용자가 등록한 곡의 확장자, 파일명, uuid를 관리합니다.</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Counting</td>
-                                                    <td>plnum(복합키)</td>
-                                                    <td>plnum</td>
-                                                    <td>사용자가 등록한 곡의 전체, 일, 주, 월별 조회수를 관리합니다.</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Ranking</td>
-                                                    <td>plnum(복합키)</td>
-                                                    <td>plnum</td>
-                                                    <td>사용자가 등록한 곡의 조회수에 따른 기간별 랭킹을 관리합니다.</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Orders</td>
-                                                    <td>ordersid</td>
-                                                    <td>userId</td>
-                                                    <td>어떤 사용자의 주문정보(주문일, 주문자)를 관리 합니다.</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Detail</td>
-                                                    <td>code</td>
-                                                    <td>plnum, ordersid</td>
-                                                    <td>어떤 사용자가 어떤 곡을 주문했는지에 대한 정보를 관리합니다.</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Playlists</td>
-                                                    <td>pllistnum</td>
-                                                    <td>userId</td>
-                                                    <td>플레이리스트(플리명, 플리순번)를 관리합니다.</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Pldetail</td>
-                                                    <td>plcode</td>
-                                                    <td>pllistnum, plnum</td>
-                                                    <td>어떤 플레이리스트에 어떤 곡들이 있는지 관리합니다.</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
+                                    <h5>프로젝트 상세 문서:</h5>
+                                    <div>
+                                        <div class="pdf-container mt-3" style="width: 100%; height: 800px; border: 1px solid #ddd; border-radius: 8px; overflow: hidden;">
+                                            <embed src="/pdf/mmt.pdf?toolbar=0&navpanes=0" type="application/pdf" width="100%" height="100%" style="border: none;" />
+                                        </div>
+                                        <p class="mt-2 text-muted text-center">
+                                            <small>PDF가 표시되지 않는 경우 
+                                                <a href="/pdf/mmt.pdf" target="_blank" class="text-primary">여기를 클릭하여 새 창에서 보기</a>
+                                            </small>
+                                        </p>
                                     </div>
-                                    <br>
-                                    <ul class="list-inline">
-                                        <li>
-                                            <h5>메인페이지: </h5>
-                                            <p class="mt-2">C:import를 사용하여 네비게이션바, footer, 활동 영상, 플레이리스트페이지를 각각 불러와서 보여줌.
-                                                <br>JavaScript를 사용하여 활동 영상을 3초 단위로 자동 슬라이드.
-                                            </p>
-                                            <img class="img-fluid d-block mx-auto" src="/img/portfolio/mainpage.png" alt="..." />
-                                        </li>
-                                        <li>
-                                            <h5>회원가입/로그인 페이지: </h5>
-                                            <p class="mt-2">
-                                                Session을 사용하여 로그인 여부를 확인하고 회원에게는 로그아웃/파이페이지,<br>
-                                                비회원에게는 회원가입/로그인 버튼이 보이게 함.
-                                            </p>
-                                            <img class="img-fluid d-block mx-auto" src="/img/portfolio/loginpage.png" alt="..." />
-                                        </li>
-                                        <li>
-                                            <h5>곡 조회 페이지: </h5>
-                                            <p class="mt-2">
-                                                등록된 모든 곡 정보를 불러와서 보여줌.<br>
-                                            </p>
-                                            <img class="img-fluid d-block mx-auto" src="/img/portfolio/attendancepage.png" alt="..." />
-                                        </li>
-                                        <li>
-                                            <h5>곡 등록 페이지: </h5>
-                                            <p class="mt-2">
-                                                Session에 저장된 role 값에 따라 일반 회원은 무료 공유만 가능하고 파트너 회원은 유료 판매도 가능하게 함. <br>
-                                                파일 명과 UUID를 저장하고 파일의 확장자를 구분하여 음성 파일만 업로드 가능하게함.<br>
-                                            </p>
-                                            <img class="img-fluid d-block mx-auto" src="/img/portfolio/itempage.png" alt="..." />
-                                        </li>
-                                        <li>
-                                            <h5>순위 페이지: </h5>
-                                            <p class="mt-2">
-                                                Component에 작성한 Scheduler를 사용하여 일간,주간,월간 별로 조회수를 초기화하고 랭킹을 갱신함.<br>
-                                            </p>
-                                            <img class="img-fluid d-block mx-auto" src="/img/portfolio/uploadpage.png" alt="..." />
-                                        </li>
-                                        <li>
-                                            <h5>상품 상세 페이지: </h5>
-                                            <p class="mt-2">
-                                                상품의 상세 정보 및 등록된 파일을 확인하고, 리뷰를 남기거나 구매할 수 있도록 함.<br>
-                                            </p>
-                                            <img class="img-fluid d-block mx-auto" src="/img/portfolio/itemdetailpage.png" alt="..." />
-                                        </li>
-                                        <li>
-                                            <h5>플레이리스트 페이지: </h5>
-                                            <p class="mt-2">
-                                                저장되어 있는 모든 플레이리스트를 불러와서 보여줌.<br>
-                                                멜론 처럼 각각의 다른 회원들이 설정한 플레이리스트를 확인하고 불러올 수 있도록 함.
-                                            </p>
-                                            <img class="img-fluid d-block mx-auto" src="/img/portfolio/boardpage.png" alt="..." />
-                                        </li>
-                                        <li>
-                                            <h5>플레이리스트 등록 페이지:</h5>
-                                            <p class="mt-2">
-                                                플레이리스트 명을 입력하고 저장 버튼을 누르면 플레이리스트가 등록됨.<br>
-                                                생성된 플레이리스트에 내가 선택한 곡을 담을 수 있게 함.(장바구니 같은 형태)
-                                            </p>
-                                            <img class="img-fluid d-block mx-auto" src="/img/portfolio/orderpage.png" alt="..." />
-                                        </li>
-                                        <li>
-                                            <h5>이벤트 페이지:</h5>
-                                            <p class="mt-2">
-                                                관리자가 작성한 이벤트 및 공지사항을 확인할 수 있도록 함.
-                                            </p>
-                                            <img class="img-fluid d-block mx-auto" src="/img/portfolio/orderpage.png" alt="..." />
-                                        </li>
                                     </ul>
-                                    <br>
-                                    
                                     <!-- Tech info modal (removed duplicate here) -->
                                     <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
                                         <i class="fas fa-xmark me-1"></i>
@@ -1505,7 +1331,6 @@
                                             <p class="mt-2">include와 라우터를 사용하여 네비게이션바, footer, 활동 영상, 플레이리스트페이지를 각각 불러와서 보여줌.
                                                 <br>JavaScript를 사용하여 활동 영상을 3초 단위로 자동 슬라이드.
                                             </p>
-                                            <img class="img-fluid d-block mx-auto" src="/img/portfolio/mainpage.png" alt="..." />
                                         </li>
                                         <li>
                                             <h5>회원가입/로그인 페이지: </h5>
@@ -1513,7 +1338,6 @@
                                                 Session을 사용하여 로그인 여부를 확인하고 회원에게는 로그아웃/파이페이지,<br>
                                                 비회원에게는 회원가입/로그인 버튼이 보이게 함.
                                             </p>
-                                            <img class="img-fluid d-block mx-auto" src="/img/portfolio/loginpage.png" alt="..." />
                                         </li>
                                         <li>
                                             <h5>마이 페이지: </h5>
@@ -1521,7 +1345,6 @@
                                                 로그인 한 사용자의 정보를 불러와서 보여줌.<br>
                                                 해당 정보를 수정 가능하게 함.
                                             </p>
-                                            <img class="img-fluid d-block mx-auto" src="/img/portfolio/attendancepage.png" alt="..." />
                                         </li>
                                     </ul>
                                     <br>
