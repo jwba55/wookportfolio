@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: wookportfolio
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    envVars:
+      - key: PORT
+        value: 8089
+      - key: SPRING_PROFILES_ACTIVE
+        value: prod
